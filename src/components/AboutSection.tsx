@@ -48,12 +48,12 @@ const AboutSection = () => {
                     <div className="inline-block bg-red-600 text-white px-4 py-1 text-sm font-medium mb-6">
                         OUR HISTORY
                     </div>
-                    <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                         About Us
                     </h2>
-                    <p className="text-lg text-gray-600">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Iusto magni obcaecati aperiam
+                    <p className="text-base md:text-lg text-gray-600">
+                        We are a dedicated team focused on delivering innovative
+                        solutions and exceptional service.
                     </p>
                 </motion.div>
 
@@ -79,7 +79,7 @@ const AboutSection = () => {
                             more locations in India.
                         </p> */}
 
-                        <p className="text-xl">
+                        <p className="text-lg md:text-xl">
                             <span className="font-bold">
                                 Forzo Industrial Solutions Pvt. Ltd.
                             </span>{" "}
@@ -106,7 +106,7 @@ const AboutSection = () => {
                             under Payroll/Contract in the plant ranging from
                             worker to senior management.
                         </p>
-                        <p className="text-xl">
+                        <p className="text-lg md:text-xl">
                             Over the years we have spread across the country
                             having representatives or branches at{" "}
                             <span className="font-bold">

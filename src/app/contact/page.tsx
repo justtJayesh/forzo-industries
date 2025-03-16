@@ -266,31 +266,7 @@ export default function ContactPage() {
             </div>
 
             {/* Map Section */}
-            <div className="py-16 bg-gray-100">
-                <div className="container mx-auto px-6">
-                    <div className="text-center max-w-3xl mx-auto mb-16">
-                        <div className="text-red-600 font-semibold mb-4">
-                            LOCATION
-                        </div>
-                        <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                            Find Us
-                        </h2>
-                        <p className="text-lg text-gray-600">
-                            Visit our head office in Pune or any of our branch
-                            locations across India.
-                        </p>
-                    </div>
-
-                    <div className="h-[500px] bg-white rounded-2xl overflow-hidden shadow-lg">
-                        {/* Replace with actual map component or iframe */}
-                        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                            <p className="text-gray-600">
-                                Map would be embedded here
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </main>
     );
 }

@@ -166,9 +166,8 @@ const CoreBusiness = () => {
                         Our Focus
                     </h2>
                     <p className="text-lg text-gray-600">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        A quibusdam ab accusantium sunt repudiandae porro
-                        exercitationem, neque non.
+                        We specialize in providing targeted solutions that drive
+                        innovation and growth for our clients.
                     </p>
                 </div>
 
@@ -183,13 +182,13 @@ const CoreBusiness = () => {
                         {services.map((service) => (
                             <CarouselItem
                                 key={service.id}
-                                className="md:basis-1/2 lg:basis-1/3 pl-4"
+                                className="md:basis-1/2 lg:basis-1/3 pl-4 w-full"
                             >
                                 <Card
                                     className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border-gray-200 hover:border-red-600/30 group"
                                     onClick={() => handleServiceClick(service)}
                                 >
-                                    <div className="relative h-56 w-full overflow-hidden">
+                                    <div className="relative h-48 sm:h-56 w-full overflow-hidden">
                                         <Image
                                             src={
                                                 service.image ||
@@ -203,7 +202,7 @@ const CoreBusiness = () => {
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                     </div>
-                                    <CardContent className="p-8 relative">
+                                    <CardContent className="p-4 sm:p-8 relative">
                                         <div className="w-12 h-1 bg-red-600 mb-4"></div>
                                         <h3 className="text-xl font-bold mb-3 text-red-600 transition-colors">
                                             {service.title}
@@ -230,14 +229,13 @@ const CoreBusiness = () => {
                 </Carousel>
 
                 <Dialog open={open} onOpenChange={setOpen}>
-                    <DialogContent className="sm:max-w-3xl p-0 overflow-hidden">
+                    <DialogContent className="sm:max-w-3xl p-0 overflow-hidden max-h-[90vh] w-[95vw] sm:w-auto">
                         {selectedService && (
                             <>
-                                <div className="relative w-full h-64">
+                                <div className="relative w-full h-48 sm:h-64">
                                     <Image
                                         src={
                                             selectedService.image ||
-                                            "/placeholder.svg" ||
                                             "/placeholder.svg"
                                         }
                                         alt={selectedService.title}
@@ -246,32 +244,31 @@ const CoreBusiness = () => {
                                         priority
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                                    <div className="absolute bottom-0 left-0 p-8">
-                                        <div className="inline-block bg-red-600 text-white px-3 py-1 text-xs font-medium mb-3">
+                                    <div className="absolute bottom-0 left-0 p-4 sm:p-8">
+                                        <div className="inline-block bg-red-600 text-white px-3 py-1 text-xs font-medium mb-2 sm:mb-3">
                                             CORE SERVICE
                                         </div>
-
-                                        <DialogTitle className="text-3xl font-bold text-white">
+                                        <DialogTitle className="text-2xl sm:text-3xl font-bold text-white">
                                             {selectedService.title}
                                         </DialogTitle>
                                     </div>
                                 </div>
 
-                                <div className="p-8">
-                                    <DialogDescription className="text-lg font-bold text-gray-900 mb-8">
+                                <div className="p-4 sm:p-8 overflow-y-auto max-h-[calc(90vh-12rem)]">
+                                    <DialogDescription className="text-base sm:text-lg font-bold text-gray-900 mb-6">
                                         <p>{selectedService.description}</p>
-                                        <p className="text-sm font-normal ">
+                                        <p className="text-sm font-normal mt-2">
                                             {selectedService.sub_description}
                                         </p>
                                     </DialogDescription>
 
-                                    <div className="space-y-6 bg-gray-50 p-6 rounded-xl">
+                                    <div className="space-y-4 sm:space-y-6 bg-gray-50 p-4 sm:p-6 rounded-xl">
                                         {selectedService.details.h1 && (
                                             <div>
-                                                <h4 className="font-bold text-lg text-gray-900 mb-2">
+                                                <h4 className="font-bold text-base sm:text-lg text-gray-900 mb-2">
                                                     {selectedService.details.h1}
                                                 </h4>
-                                                <p className="text-gray-900">
+                                                <p className="text-sm sm:text-base text-gray-900">
                                                     {selectedService.details.p1}
                                                 </p>
                                             </div>
@@ -279,25 +276,24 @@ const CoreBusiness = () => {
 
                                         {selectedService.details.h2 && (
                                             <div>
-                                                <h4 className="font-bold text-lg text-gray-900 mb-2">
+                                                <h4 className="font-bold text-base sm:text-lg text-gray-900 mb-2">
                                                     {selectedService.details.h2}
                                                 </h4>
-                                                <p className="text-gray-900">
+                                                <p className="text-sm sm:text-base text-gray-900">
                                                     {selectedService.details.p2}
                                                 </p>
                                             </div>
                                         )}
 
                                         {selectedService.details.capacity && (
-                                            <div className="flex gap-3 border rounded-md">
+                                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 border rounded-md p-3">
                                                 <Badge
                                                     variant="secondary"
-                                                    className="text-sm font-bold  py-1"
+                                                    className="text-sm font-bold w-fit"
                                                 >
                                                     Capacity
                                                 </Badge>
-
-                                                <p className="text-gray-900">
+                                                <p className="text-sm sm:text-base text-gray-900">
                                                     {
                                                         selectedService.details
                                                             .capacity
@@ -307,14 +303,14 @@ const CoreBusiness = () => {
                                         )}
 
                                         {selectedService.details.types && (
-                                            <div className="flex gap-3 border rounded-md">
+                                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 border rounded-md p-3">
                                                 <Badge
                                                     variant="secondary"
-                                                    className="text-sm font-bold py-1"
+                                                    className="text-sm font-bold w-fit"
                                                 >
                                                     Types
                                                 </Badge>
-                                                <p className="text-gray-900">
+                                                <p className="text-sm sm:text-base text-gray-900">
                                                     {
                                                         selectedService.details
                                                             .types
@@ -324,14 +320,14 @@ const CoreBusiness = () => {
                                         )}
 
                                         {selectedService.details.make && (
-                                            <div className="flex gap-3 border rounded-md">
+                                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 border rounded-md p-3">
                                                 <Badge
                                                     variant="secondary"
-                                                    className="text-sm font-bold py-1"
+                                                    className="text-sm font-bold w-fit"
                                                 >
                                                     Make
                                                 </Badge>
-                                                <p className="text-gray-900">
+                                                <p className="text-sm sm:text-base text-gray-900">
                                                     {
                                                         selectedService.details
                                                             .make
@@ -342,14 +338,14 @@ const CoreBusiness = () => {
 
                                         {selectedService.details
                                             .workDescription && (
-                                            <div className="flex gap-3 border rounded-md">
+                                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 border rounded-md p-3">
                                                 <Badge
                                                     variant="secondary"
-                                                    className="text-sm font-bold py-1"
+                                                    className="text-sm font-bold w-fit"
                                                 >
                                                     Work Description
                                                 </Badge>
-                                                <p className="text-gray-900">
+                                                <p className="text-sm sm:text-base text-gray-900">
                                                     {
                                                         selectedService.details
                                                             .workDescription
@@ -359,7 +355,7 @@ const CoreBusiness = () => {
                                         )}
 
                                         {selectedService.details.statement && (
-                                            <div className="font-semibold">
+                                            <div className="text-sm sm:text-base font-semibold mt-4">
                                                 {
                                                     selectedService.details
                                                         .statement
@@ -368,15 +364,16 @@ const CoreBusiness = () => {
                                         )}
                                     </div>
 
-                                    <div className="flex justify-end mt-8 gap-4">
+                                    <div className="flex justify-end mt-6 sm:mt-8 gap-3 sm:gap-4">
                                         <Button
                                             variant="outline"
                                             onClick={() => setOpen(false)}
+                                            className="text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2"
                                         >
                                             Close
                                         </Button>
                                         <Link href="/contact">
-                                            <Button className="bg-red-600 hover:bg-red-700 text-white">
+                                            <Button className="bg-red-600 hover:bg-red-700 text-white text-sm sm:text-base px-3 py-2 sm:px-4 sm:py-2">
                                                 Contact Us
                                                 <ExternalLink className="ml-2 h-4 w-4" />
                                             </Button>

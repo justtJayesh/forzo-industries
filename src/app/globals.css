@@ -55,6 +55,9 @@
         --chart-5: 27 87% 67%;
 
         --radius: 0.5rem;
+
+        /* Base font size reduction */
+        font-size: 15px; /* Slightly reduced from default 16px */
     }
     .dark {
         --background: 0 0% 3.9%;
@@ -104,6 +107,19 @@
         --chart-4: 280 65% 60%;
 
         --chart-5: 340 75% 55%;
+    }
+
+    /* Responsive text adjustments */
+    @media (max-width: 768px) {
+        :root {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        :root {
+            font-size: 13px;
+        }
     }
 }
 

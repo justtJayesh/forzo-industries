@@ -19,7 +19,7 @@ const ServicesSection = () => {
                         <div className="inline-block bg-red-600 text-white px-4 py-1 text-sm font-medium mb-6">
                             WHAT WE OFFER
                         </div>
-                        <h2 className="text-4xl font-bold text-gray-900">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                             Our Services
                         </h2>
                     </div>
@@ -37,7 +37,7 @@ const ServicesSection = () => {
                     {/* Left section */}
                     <div className="lg:col-span-1">
                         <div className="bg-gray-50 rounded-2xl p-8 shadow-lg">
-                            <h3 className="text-2xl font-bold mb-8 text-gray-900">
+                            <h3 className="text-xl md:text-2xl font-bold mb-8 text-gray-900">
                                 Our Expertise
                             </h3>
                             <div className="space-y-3">
@@ -75,27 +75,28 @@ const ServicesSection = () => {
                     {/* Right section */}
                     <div className="lg:col-span-2">
                         {activeServiceData && (
-                            <div className="bg-gray-50 relative rounded-2xl shadow-lg p-10 h-full">
+                            <div className="bg-gray-50 relative rounded-2xl shadow-lg p-6 sm:p-10 h-full">
+                                {/* Header Section */}
                                 <div className="mb-8">
-                                    <span className="text-sm text-gray-500 mb-2 block">
+                                    <span className="text-sm text-gray-500 mb-3 block">
                                         Service{" "}
                                         {activeServiceData.id
                                             .toString()
                                             .padStart(2, "0")}
                                     </span>
-                                    <h3 className="text-3xl font-bold mb-6 text-gray-900">
+                                    <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-900">
                                         {activeServiceData.service}
                                     </h3>
-                                    <div className="w-20 h-1 bg-red-600 mb-8"></div>
-                                    <p className="text-gray-700 mb-10 text-lg leading-relaxed">
+                                    <div className="w-20 h-1 bg-red-600 mb-6"></div>
+                                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                                         {activeServiceData.description}
                                     </p>
                                 </div>
 
-                                {/* Key features or Service Providers */}
+                                {/* Features Section */}
                                 {activeServiceData.features ? (
-                                    <div>
-                                        <h4 className="text-xl font-bold mb-6 text-gray-900">
+                                    <div className="mb-16">
+                                        <h4 className="text-lg sm:text-xl font-bold mb-4 text-gray-900">
                                             Key Features
                                         </h4>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -103,10 +104,10 @@ const ServicesSection = () => {
                                                 (feature, index) => (
                                                     <div
                                                         key={index}
-                                                        className="flex items-start gap-4 bg-white p-4 rounded-lg"
+                                                        className="flex items-start gap-3 bg-white p-3 sm:p-4 rounded-lg"
                                                     >
-                                                        <div className="mt-1 min-w-4 h-4 w-4 rounded-full bg-red-600"></div>
-                                                        <span className="text-gray-700">
+                                                        <div className="mt-1.5 min-w-3 h-3 w-3 rounded-full bg-red-600"></div>
+                                                        <span className="text-sm sm:text-base text-gray-700">
                                                             {feature}
                                                         </span>
                                                     </div>
@@ -115,42 +116,41 @@ const ServicesSection = () => {
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className="mb-12">
-                                        <h3 className="text-2xl font-bold mb-6 text-gray-900">
+                                    <div className="mb-16">
+                                        <h3 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900">
                                             {
                                                 activeServiceData
                                                     .serviceProvider?.title
                                             }
                                         </h3>
-                                        <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                                        <p className="text-sm sm:text-base text-gray-700 mb-6 leading-relaxed">
                                             {
                                                 activeServiceData
                                                     .serviceProvider
                                                     ?.description
                                             }
                                         </p>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                                             {activeServiceData.serviceProvider?.otherServices.map(
                                                 (item, index) => (
                                                     <div
                                                         key={index}
-                                                        className="flex items-start gap-2 bg-white p-6 rounded-lg hover:shadow-md transition-all"
+                                                        className="flex items-start gap-2 bg-white p-4 sm:p-6 rounded-lg hover:shadow-md transition-all"
                                                     >
                                                         <div className="flex-shrink-0">
-                                                            {/* <Check className="h-6 w-6 text-red-600" /> */}
                                                             <Asterisk
                                                                 color="#ff1f1f"
-                                                                className="h-6 w-6"
+                                                                className="h-5 w-5"
                                                             />
                                                         </div>
-                                                        <span className="text-gray-700 font-bold">
+                                                        <span className="text-sm sm:text-base text-gray-700 font-bold">
                                                             {item}
                                                         </span>
                                                     </div>
                                                 )
                                             )}
                                         </div>
-                                        <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                                        <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
                                             {
                                                 activeServiceData
                                                     .serviceProvider
@@ -159,31 +159,12 @@ const ServicesSection = () => {
                                         </p>
                                     </div>
                                 )}
-                                {/* <div>
-                                    <h4 className="text-xl font-bold mb-6 text-gray-900">
-                                        Key Features
-                                    </h4>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        {activeServiceData.features?.map(
-                                            (feature, index) => (
-                                                <div
-                                                    key={index}
-                                                    className="flex items-start gap-4 bg-white p-4 rounded-lg"
-                                                >
-                                                    <div className="mt-1 min-w-4 h-4 w-4 rounded-full bg-red-600"></div>
-                                                    <span className="text-gray-700">
-                                                        {feature}
-                                                    </span>
-                                                </div>
-                                            )
-                                        )}
-                                    </div>
-                                </div> */}
 
-                                <div className="mt-10 absolute bottom-10 right-10">
+                                {/* Button Section - Fixed at bottom right */}
+                                <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10">
                                     <Link
                                         href={`/services?id=${activeServiceData.id}`}
-                                        className="inline-flex items-center justify-center rounded-md bg-red-600 px-6 py-3 text-base font-medium text-white shadow-lg hover:bg-red-700 transition-colors"
+                                        className="inline-flex items-center justify-center rounded-md bg-red-600 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-medium text-white shadow-lg hover:bg-red-700 transition-colors"
                                         aria-label={`Learn more about ${activeServiceData.service}`}
                                     >
                                         Know More
