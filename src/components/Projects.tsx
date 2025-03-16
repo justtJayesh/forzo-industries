@@ -1,13 +1,7 @@
 "use client";
 
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
 import { motion } from "motion/react";
+import { MarqueeComp } from "./MarqueeComp";
 
 const Projects = () => {
     const projects = [
@@ -71,21 +65,8 @@ const Projects = () => {
                 >
                     Major Projects
                 </motion.h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {projects.map((project, index) => (
-                        <motion.div key={index} variants={itemVariants}>
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle>{project.name}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <CardDescription>
-                                        {project.description}
-                                    </CardDescription>
-                                </CardContent>
-                            </Card>
-                        </motion.div>
-                    ))}
+                <div>
+                    <MarqueeComp />
                 </div>
             </motion.div>
         </section>

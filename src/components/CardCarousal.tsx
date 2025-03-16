@@ -30,13 +30,13 @@ export default function CardCarousal({ data }: CardCarousalProps) {
             plugins={[plugin.current]}
             className="w-full"
             onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
+            onMouseLeave={plugin.current.play}
         >
             <CarouselContent>
                 {data.map((serv, index) => (
                     <CarouselItem
                         key={index}
-                        className="pl-1 md:basis-1/2 lg:basis-1/2"
+                        className="pl-1 md:basis-1/2 lg:basis-1/3"
                     >
                         <Card className="h-[500px]">
                             <CardContent className="p-6 h-full flex flex-col">

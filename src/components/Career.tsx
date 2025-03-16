@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
-import { Magnetic } from "@/components/ui/magnetic";
 
 const Career = () => {
     const containerVariants = {
@@ -47,14 +46,7 @@ const Career = () => {
                             reach their full potential.
                         </p>
                         <div className="w-fit">
-                            <Magnetic
-                                intensity={0.2}
-                                springOptions={{ bounce: 0.1 }}
-                                actionArea="global"
-                                range={200}
-                            >
-                                <Button>Join Us</Button>
-                            </Magnetic>
+                            <Button variant="destructive">Join Us</Button>
                         </div>
                     </motion.div>
                     <motion.div variants={itemVariants}>
