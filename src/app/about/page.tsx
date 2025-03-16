@@ -5,7 +5,6 @@ import {
     Users,
     Award,
     Factory,
-    ArrowRight,
     CheckCircle,
     Target,
     Eye,
@@ -375,9 +374,10 @@ export default function AboutPage() {
                                 </h3>
                                 <p className="text-gray-600 transition-colors group-hover:text-white/90">
                                     We are committed to safety & health of our
-                                    Manpower and equipment's. We are dedicated
-                                    to implementation of the highest safety
-                                    Standards through awareness and training.
+                                    Manpower and equipment&apos;s. We are
+                                    dedicated to implementation of the highest
+                                    safety Standards through awareness and
+                                    training.
                                 </p>
                             </div>
                         </div>
@@ -451,12 +451,12 @@ export default function AboutPage() {
                                 LEADERSHIP
                             </div>
                             <h2 className="text-4xl font-bold mb-8">
-                                Director's Message
+                                Director&apos;s Message
                             </h2>
 
                             <blockquote className="space-y-2 text-xl italic text-gray-300 border-l-4 border-red-500 pl-6 my-8">
                                 <p>
-                                    "I welcome you to be a part of our
+                                    &quot;I welcome you to be a part of our
                                     meaningful journey marked by commitment to
                                     quality, trust and, of course, commercial
                                     growth. What started as a family business
@@ -475,9 +475,9 @@ export default function AboutPage() {
                                 </p>
                                 <p>
                                     With your constant support shaping our
-                                    entrepreneurial ambitions, we’re sure that
-                                    we will be able to conquer further
-                                    milestones."
+                                    entrepreneurial ambitions, we&apos;re sure
+                                    that we will be able to conquer further
+                                    milestones.&quot;
                                 </p>
                             </blockquote>
 

@@ -1,8 +1,8 @@
 import AboutSection from "@/components/AboutSection";
 import Career from "@/components/Career";
-import CoreBusiness from "@/components/CoreBusiness";
-import CoreBusiness1 from "@/components/OurFocusSection";
+
 import HeroSection from "@/components/HeroSection";
+import OurFocusSection from "@/components/OurFocusSection";
 import Projects from "@/components/Projects";
 import Services from "@/components/ServicesSection";
 
@@ -11,7 +11,7 @@ export default function Home() {
         <main className="min-h-screen">
             <HeroSection />
             <AboutSection />
-            <CoreBusiness1 />
+            <OurFocusSection />
             <Services />
             <Projects />
             <Career />

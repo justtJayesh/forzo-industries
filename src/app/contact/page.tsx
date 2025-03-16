@@ -48,7 +48,7 @@ export default function ContactPage() {
                             Contact Us
                         </h1>
                         <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-                            We're here to help and answer any questions you
+                            We&apos;re here to help and answer any questions you
                             might have about our industrial solutions.
                         </p>
                     </div>
@@ -66,7 +66,7 @@ export default function ContactPage() {
                                     REACH OUT
                                 </div>
                                 <h2 className="text-4xl font-bold text-gray-900 mb-8">
-                                    Let's Start a Conversation
+                                    Let&apos;s Start a Conversation
                                 </h2>
 
                                 <div className="space-y-8">
@@ -266,7 +266,6 @@ export default function ContactPage() {
             </div>
 
             {/* Map Section */}
-            
         </main>
     );
 }

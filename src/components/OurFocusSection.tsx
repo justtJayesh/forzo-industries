@@ -145,7 +145,7 @@ const services = [
     },
 ];
 
-const CoreBusiness = () => {
+const OurFocusSection = () => {
     const [selectedService, setSelectedService] =
         React.useState<Service | null>(null);
     const [open, setOpen] = React.useState(false);
@@ -389,4 +389,4 @@ const CoreBusiness = () => {
     );
 };
 
-export default CoreBusiness;
+export default OurFocusSection;

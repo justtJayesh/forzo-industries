@@ -129,9 +129,9 @@ export default function CareersPage() {
                         <div className="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
                         <p className="text-lg text-gray-700 max-w-3xl mx-auto">
                             At FORZO, we believe our people are our greatest
-                            asset. We're looking for talented individuals who
-                            share our passion for excellence and innovation in
-                            the industrial sector.
+                            asset. We&apos;re looking for talented individuals
+                            who share our passion for excellence and innovation
+                            in the industrial sector.
                         </p>
                     </div>
 
@@ -165,10 +165,10 @@ export default function CareersPage() {
                         </h2>
                         <div className="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
                         <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                            While we don't have specific openings at the moment,
-                            we're always looking for talented individuals to
-                            join our team. Submit your resume to be considered
-                            for future opportunities.
+                            While we don&apos;t have specific openings at the
+                            moment, we&apos;re always looking for talented
+                            individuals to join our team. Submit your resume to
+                            be considered for future opportunities.
                         </p>
                     </div>
 
@@ -185,8 +185,8 @@ export default function CareersPage() {
                             </CardHeader>
                             <CardContent>
                                 <p className="text-gray-700 mb-6">
-                                    Send us your resume and we'll keep it on
-                                    file for future opportunities that match
+                                    Send us your resume and we&apos;ll keep it
+                                    on file for future opportunities that match
                                     your skills and experience.
                                 </p>
                             </CardContent>
@@ -204,8 +204,8 @@ export default function CareersPage() {
                             </CardHeader>
                             <CardContent>
                                 <p className="text-gray-700 mb-6">
-                                    We'll contact you when positions that match
-                                    your qualifications become available.
+                                    We&apos;ll contact you when positions that
+                                    match your qualifications become available.
                                 </p>
                             </CardContent>
                         </Card>

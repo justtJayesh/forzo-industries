@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown, Menu, Phone, ArrowRight, X } from "lucide-react";
+import { ChevronDown, Menu, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -49,6 +50,14 @@ const services = [
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
+
+    const isActive = (path: string) => {
+        if (path === "/") {
+            return pathname === path;
+        }
+        return pathname?.startsWith(path);
+    };
 
     return (
         <div className="border-b border-gray-200">
@@ -93,9 +102,7 @@ export default function Navbar() {
                         <div className="font-bold text-3xl leading-none text-gray-900">
                             Forzo
                         </div>
-                        <div className="text-xs">
-                            Your Work, Our Services
-                        </div>
+                        <div className="text-xs">Your Work, Our Services</div>
                     </div>
                 </Link>
 
@@ -103,20 +110,34 @@ export default function Navbar() {
                 <nav className="hidden lg:flex items-center gap-8">
                     <Link
                         href="/"
-                        className="text-gray-900 font-medium hover:text-red-600 transition-colors"
+                        className={`font-medium transition-colors ${
+                            isActive("/")
+                                ? "text-red-600"
+                                : "text-gray-900 hover:text-red-600"
+                        }`}
                     >
                         Home
                     </Link>
                     <Link
                         href="/about"
-                        className="text-gray-900 font-medium hover:text-red-600 transition-colors"
+                        className={`font-medium transition-colors ${
+                            isActive("/about")
+                                ? "text-red-600"
+                                : "text-gray-900 hover:text-red-600"
+                        }`}
                     >
                         About
                     </Link>
 
                     {/* Services dropdown */}
                     <div className="relative group">
-                        <button className="flex items-center gap-1 text-gray-900 font-medium group-hover:text-red-600 transition-colors">
+                        <button
+                            className={`flex items-center gap-1 font-medium transition-colors ${
+                                isActive("/services")
+                                    ? "text-red-600"
+                                    : "text-gray-900 group-hover:text-red-600"
+                            }`}
+                        >
                             Services{" "}
                             <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
                         </button>
@@ -138,14 +159,22 @@ export default function Navbar() {
 
                     <Link
                         href="/career"
-                        className="text-gray-900 font-medium hover:text-red-600 transition-colors"
+                        className={`font-medium transition-colors ${
+                            isActive("/career")
+                                ? "text-red-600"
+                                : "text-gray-900 hover:text-red-600"
+                        }`}
                     >
                         Career
                     </Link>
 
                     <Link
                         href="/contact"
-                        className="text-gray-900 font-medium hover:text-red-600 transition-colors"
+                        className={`font-medium transition-colors ${
+                            isActive("/contact")
+                                ? "text-red-600"
+                                : "text-gray-900 hover:text-red-600"
+                        }`}
                     >
                         Contact
                     </Link>
@@ -203,14 +232,22 @@ export default function Navbar() {
                                 <div className="space-y-6">
                                     <Link
                                         href="/"
-                                        className="block text-xl font-medium text-gray-900 hover:text-red-600 transition-colors"
+                                        className={`block text-xl font-medium transition-colors ${
+                                            isActive("/")
+                                                ? "text-red-600"
+                                                : "text-gray-900 hover:text-red-600"
+                                        }`}
                                         onClick={() => setIsOpen(false)}
                                     >
                                         Home
                                     </Link>
                                     <Link
                                         href="/about"
-                                        className="block text-xl font-medium text-gray-900 hover:text-red-600 transition-colors"
+                                        className={`block text-xl font-medium transition-colors ${
+                                            isActive("/about")
+                                                ? "text-red-600"
+                                                : "text-gray-900 hover:text-red-600"
+                                        }`}
                                         onClick={() => setIsOpen(false)}
                                     >
                                         About
@@ -239,14 +276,22 @@ export default function Navbar() {
 
                                     <Link
                                         href="/career"
-                                        className="block text-xl font-medium text-gray-900 hover:text-red-600 transition-colors"
+                                        className={`block text-xl font-medium transition-colors ${
+                                            isActive("/career")
+                                                ? "text-red-600"
+                                                : "text-gray-900 hover:text-red-600"
+                                        }`}
                                         onClick={() => setIsOpen(false)}
                                     >
                                         Career
                                     </Link>
                                     <Link
                                         href="/contact"
-                                        className="block text-xl font-medium text-gray-900 hover:text-red-600 transition-colors"
+                                        className={`block text-xl font-medium transition-colors ${
+                                            isActive("/contact")
+                                                ? "text-red-600"
+                                                : "text-gray-900 hover:text-red-600"
+                                        }`}
                                         onClick={() => setIsOpen(false)}
                                     >
                                         Contact

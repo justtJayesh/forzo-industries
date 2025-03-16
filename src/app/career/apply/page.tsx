@@ -98,59 +98,58 @@ export default function ApplicationForm() {
     });
 
     // Handle form submission
-    // async function onSubmit(values: z.infer<typeof formSchema>) {
-    //     setIsSubmitting(true);
-    //     setSubmitResult(null);
+    async function onSubmitForm(values: z.infer<typeof formSchema>) {
+        setIsSubmitting(true);
+        setSubmitResult(null);
 
-    //     try {
-    //         // Create FormData object for file upload
-    //         const formData = new FormData();
+        try {
+            // Create FormData object for file upload
+            const formData = new FormData();
 
-    //         // Add form values to FormData
-    //         Object.entries(values).forEach(([key, value]) => {
-    //             formData.append(key, value.toString());
-    //         });
+            // Add form values to FormData
+            Object.entries(values).forEach(([key, value]) => {
+                formData.append(key, value.toString());
+            });
 
-    //         // Add resume file if selected
-    //         if (resumeFile) {
-    //             formData.append("resume", resumeFile);
-    //         }
+            // Add resume file if selected
+            if (resumeFile) {
+                formData.append("resume", resumeFile);
+            }
 
-    //         // Submit the form
-    //         // const result = await submitApplication(formData);
-    //         // setSubmitResult(result);
+            // Submit the form
+            // const result = await submitApplication(formData);
+            // setSubmitResult(result);
 
-    //         if (result.success) {
-    //             form.reset();
-    //             setResumeFile(null);
-    //             toast({
-    //                 title: "Application Submitted",
-    //                 description:
-    //                     "Your application has been submitted successfully!",
-    //             });
-    //         } else {
-    //             toast({
-    //                 variant: "destructive",
-    //                 title: "Submission Error",
-    //                 description: result.message,
-    //             });
-    //         }
-    //     } catch (error) {
-    //         setSubmitResult({
-    //             success: false,
-    //             message:
-    //                 "An unexpected error occurred. Please try again or contact us directly at info@kali.com.",
-    //         });
-    //         toast({
-    //             variant: "destructive",
-    //             title: "Submission Error",
-    //             description:
-    //                 "An unexpected error occurred. Please try again or contact us directly at info@kali.com.",
-    //         });
-    //     } finally {
-    //         setIsSubmitting(false);
-    //     }
-    // }
+            // if (result.success) {
+            //     form.reset();
+            //     setResumeFile(null);
+            //     toast({
+            //         title: "Application Submitted",
+            //         description:
+            //             "Your application has been submitted successfully!",
+            //     });
+            // } else {
+            //     toast({
+            //         variant: "destructive",
+            //         title: "Submission Error",
+            //         description: result.message,
+            //     });
+            // }
+        } catch (error) {
+            setSubmitResult({
+                success: false,
+                message: `An unexpected error occurred. Please try again or contact us directly at info@kali.com. Error: ${error}`,
+            });
+            // toast({
+            //     variant: "destructive",
+            //     title: "Submission Error",
+            //     description:
+            //         "An unexpected error occurred. Please try again or contact us directly at info@kali.com.",
+            // });
+        } finally {
+            setIsSubmitting(false);
+        }
+    }
 
     // Handle resume file change
     function handleResumeChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -200,10 +199,11 @@ export default function ApplicationForm() {
                         Submit Your Application
                     </CardTitle>
                     <CardDescription>
-                        While we don't have specific openings at the moment,
-                        we're always looking for talented individuals. Your
-                        application will be sent directly to our HR team at
-                        <b>{" "}info@forzo.in</b> and kept on file for future
+                        While we don&apos;t have specific openings at the
+                        moment, we&apos;re always looking for talented
+                        individuals. Your application will be sent directly to
+                        our HR team at
+                        <b> info@forzo.in</b> and kept on file for future
                         opportunities.
                     </CardDescription>
                 </CardHeader>
@@ -233,7 +233,10 @@ export default function ApplicationForm() {
                     )}
 
                     <Form {...form}>
-                        <form className="space-y-6">
+                        <form
+                            onSubmit={form.handleSubmit(onSubmitForm)}
+                            className="space-y-6"
+                        >
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <FormField
                                     control={form.control}
