@@ -150,7 +150,7 @@ const ServicesSection = () => {
                                                 )
                                             )}
                                         </div>
-                                        <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                                        <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                                             {
                                                 activeServiceData
                                                     .serviceProvider
@@ -182,6 +182,4 @@ const ServicesSection = () => {
 
 export default ServicesSection;
 
-// (
 
-//                                     )})
