@@ -72,6 +72,12 @@ export default function ServicesPage() {
                                 <h2 className="text-3xl font-bold text-gray-900 mb-8">
                                     Our Services
                                 </h2>
+                                
+                                {/* Mobile Dropdown */}
+                                
+
+
+                                {/* Desktop List View */}
                                 <div className="space-y-2">
                                     {services.map((service) => (
                                         <button

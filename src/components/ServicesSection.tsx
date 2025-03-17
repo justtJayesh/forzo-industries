@@ -5,7 +5,6 @@ import {
     ArrowUpRight,
     Asterisk,
     ChevronRight,
-    ChevronDown,
 } from "lucide-react";
 import Link from "next/link";
 import { getAllServices } from "@/lib/services-data";

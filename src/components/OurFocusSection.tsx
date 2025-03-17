@@ -47,7 +47,8 @@ const services = [
         title: "Industrial Plant & Machinery",
         description:
             "Induction Furnace, AOD, LRF, EAF, Material Processing Equipment, & Mechanical Press, etc.",
-        sub_description: "1000+ Industrial Heavy Machinery (Erection & Commissioned)",
+        sub_description:
+            "1000+ Industrial Heavy Machinery (Erection & Commissioned)",
         image: "/industrialPlant.jpg",
         details: {
             h1: "Heavy Machinery",
@@ -70,9 +71,8 @@ const services = [
     {
         id: 3,
         title: "Continuous Casting Machine",
-        description:
-            "Advanced continuous casting machines for high-quality metal production.",
-        sub_description: "",
+        description: "200+ Furnace & Caster",
+        sub_description: "(Eraction & Commissioned)",
         image: "/casting_machine.jpg",
         details: {
             capacity: "Single Strand to Multiple Strand",
