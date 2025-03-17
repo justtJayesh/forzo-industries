@@ -1,9 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, Asterisk, ChevronRight } from "lucide-react";
+import {
+    ArrowUpRight,
+    Asterisk,
+    ChevronRight,
+    ChevronDown,
+} from "lucide-react";
 import Link from "next/link";
 import { getAllServices } from "@/lib/services-data";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 
 const ServicesSection = () => {
     const [activeService, setActiveService] = useState(1);
@@ -36,7 +48,33 @@ const ServicesSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {/* Left section */}
                     <div className="lg:col-span-1">
-                        <div className="bg-gray-50 rounded-2xl p-8 shadow-lg">
+                        {/* Mobile Dropdown */}
+                        <div className="lg:hidden mb-6">
+                            <Select
+                                value={activeService.toString()}
+                                onValueChange={(value) =>
+                                    setActiveService(Number(value))
+                                }
+                            >
+                                <SelectTrigger className="w-full bg-gray-50 border-gray-200">
+                                    <SelectValue placeholder="Select a service" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {services.map((service) => (
+                                        <SelectItem
+                                            key={service.id}
+                                            value={service.id.toString()}
+                                            className="py-3"
+                                        >
+                                            {service.service}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        {/* Desktop List View */}
+                        <div className="hidden lg:block bg-gray-50 rounded-2xl p-8 shadow-lg">
                             <h3 className="text-xl md:text-2xl font-bold mb-8 text-gray-900">
                                 Our Expertise
                             </h3>
@@ -75,7 +113,7 @@ const ServicesSection = () => {
                     {/* Right section */}
                     <div className="lg:col-span-2">
                         {activeServiceData && (
-                            <div className="bg-gray-50 relative rounded-2xl shadow-lg p-6 sm:p-10 h-full">
+                            <div className="bg-gray-50 relative rounded-2xl shadow-lg p-6 sm:p-10">
                                 {/* Header Section */}
                                 <div className="mb-8">
                                     <span className="text-sm text-gray-500 mb-3 block">
@@ -88,14 +126,20 @@ const ServicesSection = () => {
                                         {activeServiceData.service}
                                     </h3>
                                     <div className="w-20 h-1 bg-red-600 mb-6"></div>
-                                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                                    {/* <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-5">
                                         {activeServiceData.description}
+                                    </p> */}
+                                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                                        {activeServiceData.longDescription1}
                                     </p>
+                                    {/* <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                                        {activeServiceData.longDescription2}
+                                    </p> */}
                                 </div>
 
                                 {/* Features Section */}
                                 {activeServiceData.features ? (
-                                    <div className="mb-16">
+                                    <div className="mb-20">
                                         <h4 className="text-lg sm:text-xl font-bold mb-4 text-gray-900">
                                             Key Features
                                         </h4>
@@ -116,7 +160,7 @@ const ServicesSection = () => {
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className="mb-16">
+                                    <div className="mb-20">
                                         <h3 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900">
                                             {
                                                 activeServiceData
@@ -160,7 +204,7 @@ const ServicesSection = () => {
                                     </div>
                                 )}
 
-                                {/* Button Section - Fixed at bottom right */}
+                                {/* Button Section - Absolute positioning with bottom padding space */}
                                 <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10">
                                     <Link
                                         href={`/services?id=${activeServiceData.id}`}
@@ -181,5 +225,3 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
-
-

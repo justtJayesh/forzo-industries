@@ -82,7 +82,7 @@ const services: Service[] = [
     {
         id: 2,
         service: "Layout, Design & Engineering",
-        image: "/servicesImg/lde-img1.webp",
+        image: "/lde-img.jpeg",
         description:
             "Holistic service offering that encompasses planning, conceptualization, and execution of layout designs and engineering solutions.",
         longDescription1:
@@ -178,7 +178,7 @@ const services: Service[] = [
     {
         id: 5,
         service: "Revamping and Re-installation",
-        image: "/servicesImg/rr-img1.jpeg",
+        image: "/rr.jpg",
         description:
             "Specialized services for upgrading, modernizing, and reconfiguring industrial facilities and equipment to enhance operational performance.",
         longDescription1:
@@ -237,7 +237,7 @@ const services: Service[] = [
     {
         id: 6,
         service: "Operation & Maintenance",
-        image: "/servicesImg/om-img1.jpg",
+        image: "/om.png",
         description:
             "Comprehensive solutions to enhance operational efficiency, maximize asset lifespan, and ensure safety and compliance through tailored services.",
         longDescription1:
@@ -429,7 +429,7 @@ const services: Service[] = [
     {
         id: 9,
         service: "Turnkey Projects",
-        image: "/servicesImg/tp-img1.jpg",
+        image: "/turnkey.jpg",
         description:
             "Comprehensive end-to-end solutions for businesses seeking streamlined project execution from initial concept to final implementation.",
         longDescription1:

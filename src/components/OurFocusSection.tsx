@@ -44,11 +44,11 @@ interface Service {
 const services = [
     {
         id: 1,
-        title: "Induction Melting Furnace",
+        title: "Industrial Plant & Machinery",
         description:
-            "State-of-the-art induction melting furnaces for efficient metal processing.",
-        sub_description: "",
-        image: "/induction_furnace.avif",
+            "Induction Furnace, AOD, LRF, EAF, Material Processing Equipment, & Mechanical Press, etc.",
+        sub_description: "1000+ Industrial Heavy Machinery (Erection & Commissioned)",
+        image: "/industrialPlant.jpg",
         details: {
             h1: "Heavy Machinery",
             p1: "Induction Furnace, AOD, LRF, EAF, Material Processing Equipment, Mechanical Press, Mill, Induction Melting Material Handling, Processing & Heavy Machinery etc.",
@@ -58,6 +58,17 @@ const services = [
     },
     {
         id: 2,
+        title: "Induction Melting Furnace",
+        description: "200+ Furnace & Caster",
+        sub_description: "(Eraction & Commissioned)",
+        image: "/induction_furnace.avif",
+        details: {
+            statement:
+                "Induction melting furnaces are meticulously crafted to optimize electrical efficiency, utilizing heavy-walled, high-electrically conductive copper tubing. These furnaces are versatile and can be employed with either ceramic (non-conductive) crucibles or conductive options like graphite, clay graphite, or silicon carbide. Each furnace is meticulously designed to cater to the specific melting requirements of our customers, ensuring precise temperature control and maximum efficiency. Our furnaces are adaptable and can be utilized for a wide range of applications, including melting iron and steel, precious metals, ferrous and nonferrous metals; refining high-purity metals and alloys; smelting; and vacuum and controlled atmosphere melting.",
+        },
+    },
+    {
+        id: 3,
         title: "Continuous Casting Machine",
         description:
             "Advanced continuous casting machines for high-quality metal production.",
@@ -72,7 +83,7 @@ const services = [
         },
     },
     {
-        id: 3,
+        id: 4,
         title: "Substations & Transformers",
         description: "250+ Substations & 500+ Transformers",
         sub_description: "(Erection & Commissioned)",
@@ -86,7 +97,7 @@ const services = [
         },
     },
     {
-        id: 4,
+        id: 5,
         title: "Pollution Control Systems",
         description: "25+ Pollution System",
         sub_description: "(Fabrication, Erection & Commissioned)",
@@ -100,7 +111,7 @@ const services = [
         },
     },
     {
-        id: 5,
+        id: 6,
         title: "HT/LT Panel & Cable",
         description: "1Lac+ Meters HT/LT/FO Control",
         sub_description: "(Cable Laying & Panel Wiring)",
@@ -111,7 +122,7 @@ const services = [
         },
     },
     {
-        id: 6,
+        id: 7,
         title: "Industrial Piping",
         description: "1Lac+ Meters Industrial Piping",
         sub_description: "(Fabrication, Erection & Commissioned)",
@@ -122,7 +133,7 @@ const services = [
         },
     },
     {
-        id: 7,
+        id: 8,
         title: "Cranes (EOT, Goliath)",
         description: "700+ Crane (EOT, Goliath & Others)",
         sub_description: "(Erection & Commissioned)",
@@ -133,7 +144,7 @@ const services = [
         },
     },
     {
-        id: 8,
+        id: 9,
         title: "Manpower Consulting",
         description: "15000+ Manpower",
         sub_description: "(Delivered to more than 200 Companies)",
