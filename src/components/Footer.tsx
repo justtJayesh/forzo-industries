@@ -1,4 +1,5 @@
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
+import { AiOutlineFacebook, AiOutlineLinkedin } from "react-icons/ai";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -125,7 +126,7 @@ export default function Footer() {
                         <h3 className="text-xl font-bold relative pb-3 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-1 after:w-12 after:bg-red-600">
                             Contact
                         </h3>
-                        <div className="space-y-4">
+                        <div className="space-y-5">
                             <div className="flex gap-3">
                                 <MapPin className="h-5 w-5 text-red-500 flex-shrink-0 mt-1" />
                                 <address className="not-italic text-gray-400">
@@ -160,6 +161,21 @@ export default function Footer() {
                                         +91-91454 00247
                                     </p>
                                 </div>
+                            </div>
+
+                            <div className="flex gap-5 ">
+                                <Link href="https://www.linkedin.com/company/forzo-industrial-solutions-pvt-ltd/posts/?feedView=all">
+                                    <AiOutlineLinkedin
+                                        size={28}
+                                        className=" text-red-500 flex-shrink-0 mt-3"
+                                    />
+                                </Link>
+                                <Link href="#">
+                                    <AiOutlineFacebook
+                                        size={28}
+                                        className="text-red-500 flex-shrink-0 mt-3"
+                                    />
+                                </Link>
                             </div>
                         </div>
                     </div>
