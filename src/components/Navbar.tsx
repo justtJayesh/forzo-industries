@@ -102,7 +102,7 @@ export default function Navbar() {
                         <div className="font-bold text-3xl leading-none text-gray-900">
                             Forzo
                         </div>
-                        <div className="text-xs">Your Work, Our Services</div>
+                        {/* <div className="text-xs">Your Work, Our Services</div> */}
                     </div>
                 </Link>
 

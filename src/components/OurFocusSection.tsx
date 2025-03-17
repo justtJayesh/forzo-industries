@@ -60,7 +60,7 @@ const services = [
     {
         id: 2,
         title: "Induction Melting Furnace",
-        description: "200+ Furnace & Caster",
+        description: "200+ Induction Melting Furnace",
         sub_description: "(Eraction & Commissioned)",
         image: "/induction_furnace.avif",
         details: {
@@ -71,7 +71,7 @@ const services = [
     {
         id: 3,
         title: "Continuous Casting Machine",
-        description: "200+ Furnace & Caster",
+        description: "200+ Continuous Caster Machine",
         sub_description: "(Eraction & Commissioned)",
         image: "/casting_machine.jpg",
         details: {
@@ -203,13 +203,12 @@ const OurFocusSection = () => {
                                         <Image
                                             src={
                                                 service.image ||
-                                                "/placeholder.svg" ||
                                                 "/placeholder.svg"
                                             }
                                             alt={service.title}
                                             fill
                                             sizes="100%"
-                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                            className="object-contain transition-transform duration-500 group-hover:scale-110"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                     </div>
@@ -242,7 +241,7 @@ const OurFocusSection = () => {
                 <Dialog open={open} onOpenChange={setOpen}>
                     <DialogContent className="sm:max-w-3xl p-0 overflow-hidden max-h-[90vh] w-[95vw] sm:w-auto">
                         {selectedService && (
-                            <>
+                            <div className="flex flex-col h-full">
                                 <div className="relative w-full h-48 sm:h-64">
                                     <Image
                                         src={
@@ -265,7 +264,7 @@ const OurFocusSection = () => {
                                     </div>
                                 </div>
 
-                                <div className="p-4 sm:p-8 overflow-y-auto max-h-[calc(90vh-12rem)]">
+                                <div className="p-4 sm:p-8 overflow-y-auto flex-1">
                                     <DialogDescription className="text-base sm:text-lg font-bold text-gray-900 mb-6">
                                         <p>{selectedService.description}</p>
                                         <p className="text-sm font-normal mt-2">
@@ -374,8 +373,10 @@ const OurFocusSection = () => {
                                             </div>
                                         )}
                                     </div>
+                                </div>
 
-                                    <div className="flex justify-end mt-6 sm:mt-8 gap-3 sm:gap-4">
+                                <div className="sticky bottom-0 left-0 right-0 bg-white p-4 sm:p-6 border-t">
+                                    <div className="flex justify-end gap-3 sm:gap-4">
                                         <Button
                                             variant="outline"
                                             onClick={() => setOpen(false)}
@@ -391,7 +392,7 @@ const OurFocusSection = () => {
                                         </Link>
                                     </div>
                                 </div>
-                            </>
+                            </div>
                         )}
                     </DialogContent>
                 </Dialog>

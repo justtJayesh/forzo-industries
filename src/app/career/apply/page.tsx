@@ -283,7 +283,7 @@ export default function ApplicationForm() {
                                             <FormLabel>Phone Number</FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    placeholder="+1 (555) 123-4567"
+                                                    placeholder="+91"
                                                     {...field}
                                                 />
                                             </FormControl>
@@ -298,7 +298,7 @@ export default function ApplicationForm() {
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>
-                                                Desired Position
+                                                Desired Department
                                             </FormLabel>
                                             <Select
                                                 onValueChange={field.onChange}

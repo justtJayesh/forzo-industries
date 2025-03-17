@@ -124,7 +124,7 @@ export default function ContactPage() {
                                                 href="mailto:forzo@yahoo.com"
                                                 className="text-red-600 hover:underline"
                                             >
-                                                forzo@yahoo.com
+                                                forzohr@gmail.com
                                             </a>
                                         </div>
                                     </div>
@@ -194,7 +194,7 @@ export default function ContactPage() {
                                             id="name"
                                             value={formData.name}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-4 rounded-lg border-0 focus:ring-2 focus:ring-red-600 outline-none transition-colors"
+                                            className="w-full px-4 py-4 rounded-lg border-0 focus:ring-2 focus:ring-red-600 outline-none transition-colors bg-white dark:bg-white text-gray-900 dark:text-gray-900"
                                             required
                                         />
                                     </div>
@@ -212,7 +212,7 @@ export default function ContactPage() {
                                                 id="email"
                                                 value={formData.email}
                                                 onChange={handleChange}
-                                                className="w-full px-4 py-4 rounded-lg border-0 focus:ring-2 focus:ring-red-600 outline-none transition-colors"
+                                                className="w-full px-4 py-4 rounded-lg border-0 focus:ring-2 focus:ring-red-600 outline-none transition-colors bg-white dark:bg-white text-gray-900 dark:text-gray-900"
                                                 required
                                             />
                                         </div>
@@ -229,7 +229,7 @@ export default function ContactPage() {
                                                 id="phone"
                                                 value={formData.phone}
                                                 onChange={handleChange}
-                                                className="w-full px-4 py-4 rounded-lg border-0 focus:ring-2 focus:ring-red-600 outline-none transition-colors"
+                                                className="w-full px-4 py-4 rounded-lg border-0 focus:ring-2 focus:ring-red-600 outline-none transition-colors bg-white dark:bg-white text-gray-900 dark:text-gray-900"
                                             />
                                         </div>
                                     </div>
@@ -246,7 +246,7 @@ export default function ContactPage() {
                                             rows={6}
                                             value={formData.message}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-4 rounded-lg border-0 focus:ring-2 focus:ring-red-600 outline-none transition-colors"
+                                            className="w-full px-4 py-4 rounded-lg border-0 focus:ring-2 focus:ring-red-600 outline-none transition-colors bg-white dark:bg-white text-gray-900 dark:text-gray-900"
                                             required
                                         ></textarea>
                                     </div>

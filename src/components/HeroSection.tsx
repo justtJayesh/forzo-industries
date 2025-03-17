@@ -29,7 +29,7 @@ const HeroSection = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <div className="inline-block bg-red-600 text-white px-4 py-1 text-sm font-medium mb-6">
+                        <div className="inline-block bg-red-600 text-white px-4 py-1 text-2xl font-medium mb-6">
                             INDUSTRIAL EXCELLENCE SINCE 1998
                         </div>
                     </motion.div>

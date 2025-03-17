@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
+import Link from "next/link";
 
 const Career = () => {
     const containerVariants = {
@@ -46,7 +47,9 @@ const Career = () => {
                             reach their full potential.
                         </p>
                         <div className="w-fit">
-                            <Button variant="destructive">Join Us</Button>
+                            <Link href="/career">
+                                <Button variant="destructive">Join Us</Button>
+                            </Link>
                         </div>
                     </motion.div>
                     <motion.div variants={itemVariants}>

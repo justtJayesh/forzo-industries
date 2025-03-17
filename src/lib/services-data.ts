@@ -40,7 +40,7 @@ const services: Service[] = [
         description:
             "Comprehensive approach of planning, executing, and managing service-oriented projects to ensure delivery of high-quality services.",
         longDescription1:
-            "At FORZO this Service is a comprehensive approach of planning, executing, and managing service-oriented projects. That involves coordinating resources, managing timelines, and ensuring the delivery of high-quality services that meet client expectations and organizational goals.",
+            "At FORZO, we adopt a holistic approach to planning, executing, and managing service-oriented projects. This involves effectively coordinating resources, managing timelines, and delivering high-quality services that align with client expectations and organizational objectives.",
         longDescription2:
             "It integrates best practices and tools to streamline project workflows, monitor progress, and handle potential challenges proactively.",
         features: [
