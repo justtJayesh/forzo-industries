@@ -1,12 +1,9 @@
 "use client";
 
 import type React from "react";
-
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-// import { submitApplication } from "@/app/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -20,7 +17,6 @@ import {
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -34,11 +30,17 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 
-import { AlertCircle, CheckCircle, Loader2, ArrowLeft } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { CheckCircle, Loader2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
+import { useState } from "react";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogTitle,
+} from "@/components/ui/dialog";
 
 // List of potential positions
 const potentialPositions = [
@@ -70,19 +72,10 @@ const formSchema = z.object({
     yearsOfExperience: z.coerce
         .number()
         .min(0, { message: "Years of experience must be a positive number." }),
-    coverLetter: z
-        .string()
-        .min(50, { message: "Cover letter should be at least 50 characters." }),
+    coverLetter: z.string().optional(),
 });
 
 export default function ApplicationForm() {
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitResult, setSubmitResult] = useState<{
-        success: boolean;
-        message: string;
-    } | null>(null);
-    const [resumeFile, setResumeFile] = useState<File | null>(null);
-
     // Initialize form
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -97,87 +90,68 @@ export default function ApplicationForm() {
         },
     });
 
+    // Add this line to track the PDF file
+    const [pdfFile, setPdfFile] = useState<File | null>(null);
+
+    // Add these state variables at the top of your component
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+
     // Handle form submission
-    async function onSubmitForm(values: z.infer<typeof formSchema>) {
+    async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsSubmitting(true);
-        setSubmitResult(null);
+        const formData = new FormData();
+
+        // Add all form fields to FormData
+        Object.entries(values).forEach(([key, value]) => {
+            formData.append(key, value.toString());
+        });
+
+        // Add PDF file if it exists
+        if (pdfFile) {
+            formData.append("pdf", pdfFile);
+        }
 
         try {
-            // Create FormData object for file upload
-            const formData = new FormData();
-
-            // Add form values to FormData
-            Object.entries(values).forEach(([key, value]) => {
-                formData.append(key, value.toString());
+            const response = await fetch("/api/send-email", {
+                method: "POST",
+                body: formData,
             });
 
-            // Add resume file if selected
-            if (resumeFile) {
-                formData.append("resume", resumeFile);
+            if (!response.ok) {
+                throw new Error("Submission failed");
             }
 
-            // Submit the form
-            // const result = await submitApplication(formData);
-            // setSubmitResult(result);
-
-            // if (result.success) {
-            //     form.reset();
-            //     setResumeFile(null);
-            //     toast({
-            //         title: "Application Submitted",
-            //         description:
-            //             "Your application has been submitted successfully!",
-            //     });
-            // } else {
-            //     toast({
-            //         variant: "destructive",
-            //         title: "Submission Error",
-            //         description: result.message,
-            //     });
-            // }
+            setShowSuccessDialog(true);
+            // Reset form and file
+            form.reset();
+            setPdfFile(null);
         } catch (error) {
-            setSubmitResult({
-                success: false,
-                message: `An unexpected error occurred. Please try again or contact us directly at info@kali.com. Error: ${error}`,
-            });
-            // toast({
-            //     variant: "destructive",
-            //     title: "Submission Error",
-            //     description:
-            //         "An unexpected error occurred. Please try again or contact us directly at info@kali.com.",
-            // });
+            console.log(error)
+            toast.error("Something went wrong. Please try again.");
         } finally {
             setIsSubmitting(false);
         }
     }
 
-    // Handle resume file change
-    function handleResumeChange(e: React.ChangeEvent<HTMLInputElement>) {
+    // Add a function to handle PDF file changes
+    function handlePdfChange(e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.files && e.target.files.length > 0) {
             const file = e.target.files[0];
 
             // Validate file type
-            const validTypes = [
-                "application/pdf",
-                "application/msword",
-                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            ];
-            if (!validTypes.includes(file.type)) {
-                toast.error("Please upload a PDF or Word document.", {
-                    description: "Invalid file type",
-                });
+            if (file.type !== "application/pdf") {
+                alert("Please upload a PDF file");
                 return;
             }
 
             // Validate file size (max 5MB)
             if (file.size > 5 * 1024 * 1024) {
-                toast.error("Please upload a file smaller than 5MB.", {
-                    description: "File too large",
-                });
+                alert("File size should be less than 5MB");
                 return;
             }
 
-            setResumeFile(file);
+            setPdfFile(file);
         }
     }
 
@@ -203,38 +177,14 @@ export default function ApplicationForm() {
                         moment, we&apos;re always looking for talented
                         individuals. Your application will be sent directly to
                         our HR team at
-                        <b> info@forzo.in</b> and kept on file for future
+                        <b> forzohr@gmail.in</b> and kept on file for future
                         opportunities.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                    {submitResult && (
-                        <Alert
-                            className={
-                                submitResult.success
-                                    ? "bg-green-50 mb-6"
-                                    : "bg-red-50 mb-6"
-                            }
-                        >
-                            {submitResult.success ? (
-                                <CheckCircle className="h-4 w-4 text-green-600" />
-                            ) : (
-                                <AlertCircle className="h-4 w-4 text-red-600" />
-                            )}
-                            <AlertTitle>
-                                {submitResult.success
-                                    ? "Application Submitted"
-                                    : "Submission Error"}
-                            </AlertTitle>
-                            <AlertDescription>
-                                {submitResult.message}
-                            </AlertDescription>
-                        </Alert>
-                    )}
-
                     <Form {...form}>
                         <form
-                            onSubmit={form.handleSubmit(onSubmitForm)}
+                            onSubmit={form.handleSubmit(onSubmit)}
                             className="space-y-6"
                         >
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -345,50 +295,25 @@ export default function ApplicationForm() {
                                 )}
                             />
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <FormField
-                                    control={form.control}
-                                    name="yearsOfExperience"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>
-                                                Years of Experience
-                                            </FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    type="number"
-                                                    min="0"
-                                                    {...field}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <div>
-                                    <FormLabel htmlFor="resume">
-                                        Resume
-                                    </FormLabel>
-                                    <Input
-                                        id="resume"
-                                        type="file"
-                                        accept=".pdf,.doc,.docx"
-                                        onChange={handleResumeChange}
-                                        className="cursor-pointer"
-                                        required
-                                    />
-                                    <FormDescription>
-                                        Upload your resume (PDF or Word, max
-                                        5MB)
-                                    </FormDescription>
-                                    {resumeFile && (
-                                        <p className="text-sm text-green-600 mt-1">
-                                            Selected: {resumeFile.name}
-                                        </p>
-                                    )}
-                                </div>
-                            </div>
+                            <FormField
+                                control={form.control}
+                                name="yearsOfExperience"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            Years of Experience
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                type="number"
+                                                min="0"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
 
                             <FormField
                                 control={form.control}
@@ -408,14 +333,28 @@ export default function ApplicationForm() {
                                 )}
                             />
 
+                            <div className="mb-6 space-y-2">
+                                <FormLabel htmlFor="pdf">Upload PDF</FormLabel>
+                                <Input
+                                    id="pdf"
+                                    type="file"
+                                    accept=".pdf"
+                                    onChange={handlePdfChange}
+                                    className="cursor-pointer"
+                                />
+                                {pdfFile && (
+                                    <p className="text-sm text-green-600 mt-1">
+                                        Selected: {pdfFile.name}
+                                    </p>
+                                )}
+                            </div>
                             <div className="text-sm text-gray-500 mb-4">
                                 <p>
                                     By submitting this form, you agree that your
-                                    application will be sent to info@kali.com
-                                    for review.
+                                    application will be sent to{" "}
+                                    <b>forzohr@gmail.com</b> for review.
                                 </p>
                             </div>
-
                             <Button
                                 type="submit"
                                 className="w-full bg-red-600 hover:bg-red-700"
@@ -435,6 +374,34 @@ export default function ApplicationForm() {
                 </CardContent>
             </Card>
             <Toaster />
+            <Dialog
+                open={showSuccessDialog}
+                onOpenChange={setShowSuccessDialog}
+            >
+                <DialogContent className="sm:max-w-md">
+                    <div className="flex flex-col items-center text-center">
+                        <div className="rounded-full bg-green-100 p-3 mb-4">
+                            <CheckCircle className="h-6 w-6 text-green-600" />
+                        </div>
+                        <DialogTitle className="text-xl font-semibold mb-2">
+                            Application Submitted!
+                        </DialogTitle>
+                        <DialogDescription className="mb-6">
+                            Thank you for your interest in joining our team. We
+                            will review your application and get back to you
+                            soon.
+                        </DialogDescription>
+                        <Link href="/">
+                            <Button
+                                className="bg-red-600 hover:bg-red-700"
+                                onClick={() => setShowSuccessDialog(false)}
+                            >
+                                Back to Home
+                            </Button>
+                        </Link>
+                    </div>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

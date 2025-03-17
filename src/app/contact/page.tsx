@@ -5,6 +5,7 @@ import type React from "react";
 import { Building, Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ export default function ContactPage() {
         phone: "",
         message: "",
     });
+    // const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -21,12 +23,40 @@ export default function ContactPage() {
         setFormData((prev) => ({ ...prev, [id]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        // Form submission logic would go here
-        console.log(formData);
-        alert("Thank you for your message. We'll get back to you soon!");
-    };
+        // setIsSubmitting(true);
+
+        const formDataToSend = new FormData();
+        formDataToSend.append("name", formData.name);
+        formDataToSend.append("email", formData.email);
+        formDataToSend.append("phone", formData.phone);
+        formDataToSend.append("message", formData.message);
+
+        try {
+            const response = await fetch("/api/send-message", {
+                method: "POST",
+                body: formDataToSend,
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to send message");
+            }
+
+            // Show success message
+            toast.success("Message sent successfully!");
+            // Reset form
+            setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                message: "",
+            });
+        } catch (error) {
+            console.log(error)
+            toast.error("Failed to send message. Please try again.");
+        } 
+    }
 
     return (
         <main className="min-h-screen bg-white">
