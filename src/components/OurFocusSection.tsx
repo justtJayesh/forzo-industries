@@ -239,10 +239,10 @@ const OurFocusSection = () => {
                 </Carousel>
 
                 <Dialog open={open} onOpenChange={setOpen}>
-                    <DialogContent className="sm:max-w-3xl p-0 overflow-hidden max-h-[90vh] w-[95vw] sm:w-auto">
+                    <DialogContent className="sm:max-w-3xl p-0 overflow-hidden max-h-[90vh] w-[95vw] sm:w-auto flex flex-col">
                         {selectedService && (
-                            <div className="flex flex-col h-full">
-                                <div className="relative w-full h-48 sm:h-64">
+                            <>
+                                <div className="relative w-full h-48 sm:h-64 flex-shrink-0">
                                     <Image
                                         src={
                                             selectedService.image ||
@@ -264,118 +264,138 @@ const OurFocusSection = () => {
                                     </div>
                                 </div>
 
-                                <div className="p-4 sm:p-8 overflow-y-auto flex-1">
-                                    <DialogDescription className="text-base sm:text-lg font-bold text-gray-900 mb-6">
-                                        <p>{selectedService.description}</p>
-                                        <p className="text-sm font-normal mt-2">
-                                            {selectedService.sub_description}
-                                        </p>
-                                    </DialogDescription>
-
-                                    <div className="space-y-4 sm:space-y-6 bg-gray-50 p-4 sm:p-6 rounded-xl">
-                                        {selectedService.details.h1 && (
-                                            <div>
-                                                <h4 className="font-bold text-base sm:text-lg text-gray-900 mb-2">
-                                                    {selectedService.details.h1}
-                                                </h4>
-                                                <p className="text-sm sm:text-base text-gray-900">
-                                                    {selectedService.details.p1}
-                                                </p>
-                                            </div>
-                                        )}
-
-                                        {selectedService.details.h2 && (
-                                            <div>
-                                                <h4 className="font-bold text-base sm:text-lg text-gray-900 mb-2">
-                                                    {selectedService.details.h2}
-                                                </h4>
-                                                <p className="text-sm sm:text-base text-gray-900">
-                                                    {selectedService.details.p2}
-                                                </p>
-                                            </div>
-                                        )}
-
-                                        {selectedService.details.capacity && (
-                                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 border rounded-md p-3">
-                                                <Badge
-                                                    variant="secondary"
-                                                    className="text-sm font-bold w-fit"
-                                                >
-                                                    Capacity
-                                                </Badge>
-                                                <p className="text-sm sm:text-base text-gray-900">
-                                                    {
-                                                        selectedService.details
-                                                            .capacity
-                                                    }
-                                                </p>
-                                            </div>
-                                        )}
-
-                                        {selectedService.details.types && (
-                                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 border rounded-md p-3">
-                                                <Badge
-                                                    variant="secondary"
-                                                    className="text-sm font-bold w-fit"
-                                                >
-                                                    Types
-                                                </Badge>
-                                                <p className="text-sm sm:text-base text-gray-900">
-                                                    {
-                                                        selectedService.details
-                                                            .types
-                                                    }
-                                                </p>
-                                            </div>
-                                        )}
-
-                                        {selectedService.details.make && (
-                                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 border rounded-md p-3">
-                                                <Badge
-                                                    variant="secondary"
-                                                    className="text-sm font-bold w-fit"
-                                                >
-                                                    Make
-                                                </Badge>
-                                                <p className="text-sm sm:text-base text-gray-900">
-                                                    {
-                                                        selectedService.details
-                                                            .make
-                                                    }
-                                                </p>
-                                            </div>
-                                        )}
-
-                                        {selectedService.details
-                                            .workDescription && (
-                                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 border rounded-md p-3">
-                                                <Badge
-                                                    variant="secondary"
-                                                    className="text-sm font-bold w-fit"
-                                                >
-                                                    Work Description
-                                                </Badge>
-                                                <p className="text-sm sm:text-base text-gray-900">
-                                                    {
-                                                        selectedService.details
-                                                            .workDescription
-                                                    }
-                                                </p>
-                                            </div>
-                                        )}
-
-                                        {selectedService.details.statement && (
-                                            <div className="text-sm sm:text-base font-semibold mt-4">
+                                <div className="flex-1 overflow-y-auto">
+                                    <div className="p-4 sm:p-8">
+                                        <DialogDescription className="text-base sm:text-lg font-bold text-gray-900 mb-6">
+                                            <p>{selectedService.description}</p>
+                                            <p className="text-sm font-normal mt-2">
                                                 {
-                                                    selectedService.details
-                                                        .statement
+                                                    selectedService.sub_description
                                                 }
-                                            </div>
-                                        )}
+                                            </p>
+                                        </DialogDescription>
+
+                                        <div className="space-y-4 sm:space-y-6 bg-gray-50 p-4 sm:p-6 rounded-xl">
+                                            {selectedService.details.h1 && (
+                                                <div>
+                                                    <h4 className="font-bold text-base sm:text-lg text-gray-900 mb-2">
+                                                        {
+                                                            selectedService
+                                                                .details.h1
+                                                        }
+                                                    </h4>
+                                                    <p className="text-sm sm:text-base text-gray-900">
+                                                        {
+                                                            selectedService
+                                                                .details.p1
+                                                        }
+                                                    </p>
+                                                </div>
+                                            )}
+
+                                            {selectedService.details.h2 && (
+                                                <div>
+                                                    <h4 className="font-bold text-base sm:text-lg text-gray-900 mb-2">
+                                                        {
+                                                            selectedService
+                                                                .details.h2
+                                                        }
+                                                    </h4>
+                                                    <p className="text-sm sm:text-base text-gray-900">
+                                                        {
+                                                            selectedService
+                                                                .details.p2
+                                                        }
+                                                    </p>
+                                                </div>
+                                            )}
+
+                                            {selectedService.details
+                                                .capacity && (
+                                                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 border rounded-md p-3">
+                                                    <Badge
+                                                        variant="secondary"
+                                                        className="text-sm font-bold w-fit"
+                                                    >
+                                                        Capacity
+                                                    </Badge>
+                                                    <p className="text-sm sm:text-base text-gray-900">
+                                                        {
+                                                            selectedService
+                                                                .details
+                                                                .capacity
+                                                        }
+                                                    </p>
+                                                </div>
+                                            )}
+
+                                            {selectedService.details.types && (
+                                                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 border rounded-md p-3">
+                                                    <Badge
+                                                        variant="secondary"
+                                                        className="text-sm font-bold w-fit"
+                                                    >
+                                                        Types
+                                                    </Badge>
+                                                    <p className="text-sm sm:text-base text-gray-900">
+                                                        {
+                                                            selectedService
+                                                                .details.types
+                                                        }
+                                                    </p>
+                                                </div>
+                                            )}
+
+                                            {selectedService.details.make && (
+                                                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 border rounded-md p-3">
+                                                    <Badge
+                                                        variant="secondary"
+                                                        className="text-sm font-bold w-fit"
+                                                    >
+                                                        Make
+                                                    </Badge>
+                                                    <p className="text-sm sm:text-base text-gray-900">
+                                                        {
+                                                            selectedService
+                                                                .details.make
+                                                        }
+                                                    </p>
+                                                </div>
+                                            )}
+
+                                            {selectedService.details
+                                                .workDescription && (
+                                                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 border rounded-md p-3">
+                                                    <Badge
+                                                        variant="secondary"
+                                                        className="text-sm font-bold w-fit"
+                                                    >
+                                                        Work Description
+                                                    </Badge>
+                                                    <p className="text-sm sm:text-base text-gray-900">
+                                                        {
+                                                            selectedService
+                                                                .details
+                                                                .workDescription
+                                                        }
+                                                    </p>
+                                                </div>
+                                            )}
+
+                                            {selectedService.details
+                                                .statement && (
+                                                <div className="text-sm sm:text-base font-semibold mt-4">
+                                                    {
+                                                        selectedService.details
+                                                            .statement
+                                                    }
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div className="sticky bottom-0 left-0 right-0 bg-white p-4 sm:p-6 border-t">
+                                <div className="flex-shrink-0 bg-white p-4 sm:p-6 border-t">
                                     <div className="flex justify-end gap-3 sm:gap-4">
                                         <Button
                                             variant="outline"
@@ -392,7 +412,7 @@ const OurFocusSection = () => {
                                         </Link>
                                     </div>
                                 </div>
-                            </div>
+                            </>
                         )}
                     </DialogContent>
                 </Dialog>

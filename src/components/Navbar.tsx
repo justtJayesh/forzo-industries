@@ -15,15 +15,15 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 // Sample services data
 const services = [
-    { id: 1, name: "Turnkey Projects", href: "/services?id=10" },
-    { id: 2, name: "Project Management", href: "/services?id=1" },
-    { id: 3, name: "Layout, Design & Engineering", href: "/services?id=2" },
+    { id: 1, name: "Turnkey Projects", href: "/services?id=1" },
+    { id: 2, name: "Project Management", href: "/services?id=2" },
+    { id: 3, name: "Layout, Design & Engineering", href: "/services?id=3" },
     {
         id: 4,
         name: "Supply, Installation, Erection & Commissioning",
-        href: "/services?id=3",
+        href: "/services?id=4",
     },
-    { id: 5, name: "Industrial Piping & Fabrication", href: "/services?id=4" },
+    { id: 5, name: "Industrial Piping & Fabrication", href: "/services?id=5" },
     { id: 6, name: "Revamping & Re-installation", href: "/services?id=6" },
     {
         id: 7,

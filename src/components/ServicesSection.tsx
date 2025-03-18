@@ -25,7 +25,7 @@ const ServicesSection = () => {
     const [activeService, setActiveService] = useState(1);
     const services = getAllServices();
     const activeServiceData = services.find((s) => s.id === activeService);
-    console.log("specific Data: ", activeServiceData?.serviceProvider);
+    // console.log("specific Data: ", activeServiceData?.serviceProvider);
 
     return (
         <section className="py-20 bg-white">
