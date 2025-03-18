@@ -54,25 +54,6 @@ const AboutSection = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-1 gap-8 ">
                     <motion.div variants={itemVariants}>
-                        {/* <p className="text-lg mb-6">
-                            Forzo Industrial Solutions Pvt. Ltd. was established
-                            in Pune, India in 1998. With over 30 years of
-                            experience in the Secondary Steel Industry, we have
-                            maintained an excellent reputation in the market,
-                            particularly for our Erection & Commissioning work.
-                        </p>
-                        <p className="text-lg mb-6">
-                            We have served more than 200 companies and currently
-                            have 2500+ live manpower working under
-                            Payroll/Contract in plants across India, ranging
-                            from workers to senior management.
-                        </p>
-                        <p className="text-lg">
-                            Our presence spans across the country with
-                            representatives or branches in Mumbai, Nashik,
-                            Jalna, Nagpur, Mandi Govindgarh, Bengaluru, and many
-                            more locations in India.
-                        </p> */}
 
                         <p className="text-lg md:text-xl">
                             <span className="font-bold">
@@ -87,7 +68,7 @@ const AboutSection = () => {
                             being well known for the Erection & Commissioning
                             work. We have an envious inventory of{" "}
                             <span className="font-bold">
-                                35000+ manpower/staff{" "}
+                                15000+ manpower/staff{" "}
                             </span>
                             served to more than
                             <span className="font-bold">
@@ -96,7 +77,7 @@ const AboutSection = () => {
                             </span>{" "}
                             In the Steel Industry,{" "}
                             <span className="font-bold">
-                                2500+ live manpower working
+                                1600 live manpower working
                             </span>{" "}
                             under Payroll/Contract in the plant ranging from
                             worker to senior management.
