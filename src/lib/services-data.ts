@@ -11,9 +11,10 @@ interface ServiceCategory {
 
 interface ServiceProvider {
     title: string;
-    description: string;
-    otherServices: string[];
-    subDescription: string;
+    description?: string;
+    detailedDescription?: string;
+    otherServices?: string[];
+    subDescription?: string;
 }
 
 interface Service {
@@ -28,6 +29,7 @@ interface Service {
     servicesOffered?: ServiceCategory[];
     valueProposition?: CoreServices[];
     image?: string;
+    serviceContract?: ServiceProvider;
     serviceProvider?: ServiceProvider;
     conclusion?: string;
 }
@@ -35,6 +37,40 @@ interface Service {
 const services: Service[] = [
     {
         id: 1,
+        service: "Turnkey Projects",
+        image: "/turnkey.jpg",
+        description:
+            "Comprehensive end-to-end solutions for businesses seeking streamlined project execution from initial concept to final implementation.",
+        longDescription1:
+            "Forzo offers comprehensive Turnkey Project Services, delivering end-to-end solutions for businesses seeking streamlined project execution. Our turnkey approach ensures that every phase of a project from initial concept and design to final implementation and commissioning is managed with precision and efficiency. We handle all aspects of the project lifecycle, including planning, design, procurement, construction, installation, and quality assurance. Our experienced team coordinates each step, allowing clients to focus on their core business activities while we manage timelines, budgets, and technical requirements. Forzo Turnkey Project Service is ideal for industries requiring complex infrastructure development, equipment installation, or large-scale project management. By choosing Forzo, clients benefit from a single point of accountability, reduced risk, and accelerated project completion. With a focus on delivering high-quality results and exceeding client expectations, Forzo is a trusted partner for turnkey projects of all sizes and complexities.",
+        longDescription2: "",
+        longDescription3:
+            "Forzo Turnkey Project Service is ideal for industries requiring complex infrastructure development, equipment installation, or large-scale project management. By choosing Forzo, clients benefit from a single point of accountability, reduced risk, and accelerated project completion.",
+        serviceProvider: {
+            title: "Forzo as an MEP Service Provider",
+            description:
+                "FORZO MEP Service is a leading provider of Mechanical, Electrical, and Plumbing (MEP) solutions, delivering end-to-end services for residential, commercial, and industrial projects. Our expertise spans from design and engineering to installation, maintenance, and project management, ensuring seamless integration and optimal performance of building systems.",
+            otherServices: [
+                "Mechanical Systems",
+                "Electrical Systems",
+                "Plumbing Systems",
+                "Project Management",
+            ],
+            subDescription:
+                "With a focus on safety, efficiency, and sustainability, FORZO MEP Service utilizes advanced technologies and best practices to meet and exceed client expectations. Our experienced team of engineers and technicians is committed to delivering reliable, high-quality services that enhance the functionality and comfort of built environments.",
+        },
+        serviceContract: {
+            title: "Forzo as an EPC Contractor",
+            description:
+                "Forzo is a leading Engineering, Procurement, and Construction (EPC) contractor, delivering comprehensive project solutions across various industries. As an EPC contractor, Forzo manages every phase of a project, from initial design and engineering through procurement of materials and equipment, to construction and final commissioning. This end-to-end approach ensures streamlined project execution, reduced risks, and adherence to budget and timeline commitments. ",
+            detailedDescription:
+                "Forzo's engineering expertise encompasses feasibility studies, detailed design, and innovative solutions tailored to client needs. The procurement process leverages strong supplier relationships to source high-quality materials and equipment efficiently. During construction, Forzo maintains rigorous safety and quality standards, employing skilled professionals and advanced project management techniques. With a focus on sustainability and innovation, Forzo delivers projects that meet the highest industry standards. Their portfolio includes infrastructure, energy, industrial, and commercial projects, showcasing versatility and a strong track record of successful completions. Forzo's holistic approach as an EPC contractor not only simplifies project management for clients but also enhances project efficiency and performance, making them a trusted partner in delivering complex and large-scale projects globally.",
+        },
+        conclusion:
+            "For tailored MEP solutions and exceptional service, trust FORZO MEP Service to power your next project.",
+    },
+    {
+        id: 2,
         service: "Project Management",
         image: "/servicesImg/pm-img4.jpg",
         description:
@@ -80,7 +116,7 @@ const services: Service[] = [
             "Our Service Project Management fosters collaboration, transparency, and efficiency, contributing to the successful completion of projects within scope, time, and budget constraints.",
     },
     {
-        id: 2,
+        id: 3,
         service: "Layout, Design & Engineering",
         image: "/lde-img.jpeg",
         description:
@@ -101,7 +137,7 @@ const services: Service[] = [
             "Our Layout, Design & Engineering offers end-to-end solutions that transform ideas into reality, delivering spaces that are not only functional but also inspire and engage those who use them.",
     },
     {
-        id: 3,
+        id: 4,
         service: "Supply, Installation, Erection & Commissioning",
         image: "/servicesImg/sic-img1.jpg",
         description:
@@ -122,7 +158,7 @@ const services: Service[] = [
             "FORZO delivers seamless project execution, minimizes risks, and ensures projects are completed on time, within budget, and to the highest quality standards.",
     },
     {
-        id: 4,
+        id: 5,
         service: "Industrial Piping and Fabrication",
         image: "/servicesImg/ipf-img1.jpg",
         description:
@@ -176,7 +212,7 @@ const services: Service[] = [
             "FORZO stands as a trusted partner in industrial piping and fabrication, offering robust, innovative, and cost-effective solutions that drive operational efficiency and project success.",
     },
     {
-        id: 5,
+        id: 6,
         service: "Revamping and Re-installation",
         image: "/rr.jpg",
         description:
@@ -235,7 +271,7 @@ const services: Service[] = [
             "FORZO provides robust and reliable revamping and re-installation services, helping clients modernize their facilities, optimize performance, and achieve long-term operational success.",
     },
     {
-        id: 6,
+        id: 7,
         service: "Operation & Maintenance",
         image: "/om.png",
         description:
@@ -298,7 +334,7 @@ const services: Service[] = [
             "With a strong track record in managing complex plant operations and maintenance challenges, FORZO ensures productivity, safety, and sustainability, making us the preferred partner for Operation & Maintenance needs.",
     },
     {
-        id: 7,
+        id: 8,
         service: "Plant Productivity Improvement",
         image: "/servicesImg/pp-img1.avif",
         description:
@@ -362,7 +398,7 @@ const services: Service[] = [
             "With a proven track record in boosting productivity, FORZO delivers tailored solutions that align with client goals, driving long-term operational excellence and profitability.",
     },
     {
-        id: 8,
+        id: 9,
         service: "Industrial Automation (IoT)",
         image: "/servicesImg/iot-img1.webp",
         description:
@@ -425,34 +461,6 @@ const services: Service[] = [
         ],
         conclusion:
             "With a focus on innovation and reliability, FORZO delivers tailored Industrial Automation and IOT solutions that improve operational efficiency, safety, and profitability, positioning businesses for success in Industry.",
-    },
-    {
-        id: 9,
-        service: "Turnkey Projects",
-        image: "/turnkey.jpg",
-        description:
-            "Comprehensive end-to-end solutions for businesses seeking streamlined project execution from initial concept to final implementation.",
-        longDescription1:
-            "Forzo offers comprehensive Turnkey Project Services, delivering end-to-end solutions for businesses seeking streamlined project execution. Our turnkey approach ensures that every phase of a project from initial concept and design to final implementation and commissioning is managed with precision and efficiency. We handle all aspects of the project lifecycle, including planning, design, procurement, construction, installation, and quality assurance. Our experienced team coordinates each step, allowing clients to focus on their core business activities while we manage timelines, budgets, and technical requirements. Forzo Turnkey Project Service is ideal for industries requiring complex infrastructure development, equipment installation, or large-scale project management. By choosing Forzo, clients benefit from a single point of accountability, reduced risk, and accelerated project completion. With a focus on delivering high-quality results and exceeding client expectations, Forzo is a trusted partner for turnkey projects of all sizes and complexities.",
-        longDescription2:
-            "Forzo is a leading Engineering, Procurement, and Construction (EPC) contractor, delivering comprehensive project solutions across various industries. As an EPC contractor, Forzo manages every phase of a project, from initial design and engineering through procurement of materials and equipment, to construction and final commissioning. This end-to-end approach ensures streamlined project execution, reduced risks, and adherence to budget and timeline commitments. Forzo's engineering expertise encompasses feasibility studies, detailed design, and innovative solutions tailored to client needs. The procurement process leverages strong supplier relationships to source high-quality materials and equipment efficiently. During construction, Forzo maintains rigorous safety and quality standards, employing skilled professionals and advanced project management techniques. With a focus on sustainability and innovation, Forzo delivers projects that meet the highest industry standards. Their portfolio includes infrastructure, energy, industrial, and commercial projects, showcasing versatility and a strong track record of successful completions. Forzo's holistic approach as an EPC contractor not only simplifies project management for clients but also enhances project efficiency and performance, making them a trusted partner in delivering complex and large-scale projects globally.",
-        longDescription3:
-            "Forzo Turnkey Project Service is ideal for industries requiring complex infrastructure development, equipment installation, or large-scale project management. By choosing Forzo, clients benefit from a single point of accountability, reduced risk, and accelerated project completion.",
-        serviceProvider: {
-            title: "Forzo as an MEP Service Provider",
-            description:
-                "FORZO MEP Service is a leading provider of Mechanical, Electrical, and Plumbing (MEP) solutions, delivering end-to-end services for residential, commercial, and industrial projects. Our expertise spans from design and engineering to installation, maintenance, and project management, ensuring seamless integration and optimal performance of building systems.",
-            otherServices: [
-                "Mechanical Systems",
-                "Electrical Systems",
-                "Plumbing Systems",
-                "Project Management",
-            ],
-            subDescription:
-                "With a focus on safety, efficiency, and sustainability, FORZO MEP Service utilizes advanced technologies and best practices to meet and exceed client expectations. Our experienced team of engineers and technicians is committed to delivering reliable, high-quality services that enhance the functionality and comfort of built environments.",
-        },
-        conclusion:
-            "For tailored MEP solutions and exceptional service, trust FORZO MEP Service to power your next project.",
     },
 ];
 

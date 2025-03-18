@@ -15,37 +15,23 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 // Sample services data
 const services = [
-    { name: "Project Management", href: "/services" },
+    { id: 1, name: "Turnkey Projects", href: "/services?id=10" },
+    { id: 2, name: "Project Management", href: "/services?id=1" },
+    { id: 3, name: "Layout, Design & Engineering", href: "/services?id=2" },
     {
-        name: "Layout, Design & Engineering",
-        href: "/services",
-    },
-    {
+        id: 4,
         name: "Supply, Installation, Erection & Commissioning",
-        href: "/services",
+        href: "/services?id=3",
     },
-    { name: "Industrial Piping & Fabrication", href: "/services" },
-    { name: "Safety Compliance", href: "/services" },
+    { id: 5, name: "Industrial Piping & Fabrication", href: "/services?id=4" },
+    { id: 6, name: "Revamping & Re-installation", href: "/services?id=6" },
     {
-        name: "Revamping & Re-installation",
-        href: "/services",
-    },
-    {
+        id: 7,
         name: "Plant Operation & Maintenance Contractor",
-        href: "/services",
+        href: "/services?id=7",
     },
-    {
-        name: "Plant Productivity Improvement",
-        href: "/services",
-    },
-    {
-        name: "Industrial Automation (IoT)",
-        href: "/services",
-    },
-    {
-        name: "Turnkey Projects",
-        href: "/services",
-    },
+    { id: 8, name: "Plant Productivity Improvement", href: "/services?id=8" },
+    { id: 9, name: "Industrial Automation (IoT)", href: "/services?id=9" },
 ];
 
 export default function Navbar() {

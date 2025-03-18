@@ -1,13 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import {
-    ArrowUpRight,
-    Asterisk,
-    ChevronRight,
-} from "lucide-react";
+import { ArrowUpRight, Asterisk, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { getAllServices } from "@/lib/services-data";
+import { motion } from "motion/react";
 import {
     Select,
     SelectContent,
@@ -15,6 +12,14 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+
+const itemVariants = {
+    hidden: { y: 10, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+    },
+};
 
 const ServicesSection = () => {
     const [activeService, setActiveService] = useState(1);
@@ -25,24 +30,23 @@ const ServicesSection = () => {
     return (
         <section className="py-20 bg-white">
             <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16">
-                    <div>
-                        <div className="inline-block bg-red-600 text-white px-4 py-1 text-sm font-medium mb-6">
-                            WHAT WE OFFER
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                            Our Services
-                        </h2>
+                <motion.div
+                    variants={itemVariants}
+                    className="text-center max-w-3xl mx-auto mb-16"
+                >
+                    <div className="inline-block bg-red-600 text-white px-4 py-1 text-sm font-medium mb-6">
+                        WHAT WE OFFER
                     </div>
-                    <Link
-                        href="/services"
-                        className="flex items-center gap-2 text-gray-900 mt-6 md:mt-0 group font-medium"
-                        aria-label="Read more about our services"
-                    >
-                        <span>View all services</span>
-                        <ArrowUpRight className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                    </Link>
-                </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                        Our Services
+                    </h2>
+                    <p className="text-base md:text-lg text-gray-600">
+                        We provide comprehensive, personalized solutions
+                        tailored to each client&apos;s unique needs, ensuring
+                        timely delivery and ongoing support to exceed
+                        expectations.
+                    </p>
+                </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {/* Left section */}
@@ -174,7 +178,7 @@ const ServicesSection = () => {
                                             }
                                         </p>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                                            {activeServiceData.serviceProvider?.otherServices.map(
+                                            {activeServiceData.serviceProvider?.otherServices?.map(
                                                 (item, index) => (
                                                     <div
                                                         key={index}

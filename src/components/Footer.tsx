@@ -27,11 +27,6 @@ export default function Footer() {
                                 </p>
                             </div>
                         </div>
-                        {/* <p className="text-gray-400 max-w-xs">
-                            Providing innovative industrial solutions since
-                            1998, with a commitment to quality, safety, and
-                            excellence.
-                        </p> */}
                     </div>
 
                     <div className="space-y-6">
@@ -130,7 +125,7 @@ export default function Footer() {
                             <div className="flex gap-3">
                                 <MapPin className="h-5 w-5 text-red-500 flex-shrink-0 mt-1" />
                                 <address className="not-italic text-gray-400">
-                                    Office No. 706 & 707, 7th Floor Park Plaza
+                                    Office No. 705, 706 & 707, 7th Floor Park Plaza
                                     Business Center, Porwal Road, Pune,
                                     Maharashtra - 411047
                                 </address>
@@ -143,13 +138,13 @@ export default function Footer() {
                                         href="mailto:forzo@yahoo.com"
                                         className="text-gray-400 hover:text-white transition-colors block"
                                     >
-                                        forzo@yahoo.com
+                                        info@forzo.in
                                     </a>
                                     <a
                                         href="mailto:info@forzo.in"
                                         className="text-gray-400 hover:text-white transition-colors block"
                                     >
-                                        info@forzo.in
+                                        forzohr@gmail.com
                                     </a>
                                 </div>
                             </div>

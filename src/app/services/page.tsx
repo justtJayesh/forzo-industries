@@ -16,6 +16,14 @@ export default function ServicesPage() {
         serviceId || 1
     );
 
+    // Add this useEffect to handle scrolling
+    useEffect(() => {
+        const contentElement = document.getElementById("service-content");
+        if (contentElement) {
+            contentElement.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [activeServiceId]);
+
     // Helper function to get service by ID
     const getServiceById = (id: number) => {
         return services.find((service) => service.id === id) || null;
@@ -72,10 +80,8 @@ export default function ServicesPage() {
                                 <h2 className="text-3xl font-bold text-gray-900 mb-8">
                                     Our Services
                                 </h2>
-                                
-                                {/* Mobile Dropdown */}
-                                
 
+                                {/* Mobile Dropdown */}
 
                                 {/* Desktop List View */}
                                 <div className="space-y-2">
@@ -106,7 +112,10 @@ export default function ServicesPage() {
                         {/* Main Content */}
                         <div className="md:col-span-2 lg:col-span-2">
                             {activeService && (
-                                <div className="bg-white p-8 rounded-2xl shadow-lg">
+                                <div
+                                    id="service-content"
+                                    className="bg-white p-8 rounded-2xl shadow-lg"
+                                >
                                     <div className="inline-block bg-gray-100 text-red-600 px-4 py-1 text-sm font-medium mb-6">
                                         SERVICE{" "}
                                         {activeService.id
@@ -121,18 +130,18 @@ export default function ServicesPage() {
                                     {/* Service Description */}
                                     <div className="mb-12">
                                         {activeService.longDescription1 && (
-                                            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                                            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                                                 {activeService.longDescription1}
                                             </p>
                                         )}
 
                                         {activeService.longDescription2 && (
-                                            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                                            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                                                 {activeService.longDescription2}
                                             </p>
                                         )}
                                         {activeService.longDescription3 && (
-                                            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                                            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                                                 {activeService.longDescription3}
                                             </p>
                                         )}
@@ -258,6 +267,8 @@ export default function ServicesPage() {
                                             </div>
                                         )}
 
+                                    {/*  */}
+
                                     {/* Value Proposition */}
                                     {activeService.valueProposition &&
                                         activeService.valueProposition.length >
@@ -290,6 +301,33 @@ export default function ServicesPage() {
                                             </div>
                                         )}
 
+                                    {/* Service Contract */}
+                                    {activeService.serviceProvider && (
+                                        <div className="mb-12">
+                                            <h3 className="text-2xl font-bold mb-6 text-gray-900">
+                                                {
+                                                    activeService
+                                                        .serviceContract?.title
+                                                }
+                                            </h3>
+                                            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                                                {
+                                                    activeService
+                                                        .serviceContract
+                                                        ?.description
+                                                }
+                                            </p>
+
+                                            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                                                {
+                                                    activeService
+                                                        .serviceContract
+                                                        ?.detailedDescription
+                                                }
+                                            </p>
+                                        </div>
+                                    )}
+
                                     {/* Service Provider */}
                                     {activeService.serviceProvider && (
                                         <div className="mb-12">
@@ -299,7 +337,7 @@ export default function ServicesPage() {
                                                         .serviceProvider.title
                                                 }
                                             </h3>
-                                            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                                            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                                                 {
                                                     activeService
                                                         .serviceProvider
@@ -307,7 +345,7 @@ export default function ServicesPage() {
                                                 }
                                             </p>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                                {activeService.serviceProvider.otherServices.map(
+                                                {activeService.serviceProvider.otherServices?.map(
                                                     (item, index) => (
                                                         <div
                                                             key={index}
@@ -327,7 +365,7 @@ export default function ServicesPage() {
                                                     )
                                                 )}
                                             </div>
-                                            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                                            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                                                 {
                                                     activeService
                                                         .serviceProvider

@@ -34,8 +34,6 @@ const AboutSection = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 className="container mx-auto px-4 mb-16"
             >
-                
-
                 <motion.div
                     variants={itemVariants}
                     className="text-center max-w-3xl mx-auto mb-16"
@@ -54,15 +52,12 @@ const AboutSection = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-1 gap-8 ">
                     <motion.div variants={itemVariants}>
-
                         <p className="text-lg md:text-xl">
                             <span className="font-bold">
                                 Forzo Industrial Solutions Pvt. Ltd.
                             </span>{" "}
-                            was established in Pune, India in the{" "}
-                            <span className="font-bold">
-                                year 1998. 30+ Years{" "}
-                            </span>
+                            was established in Pune, India in the year 1998.{" "}
+                            <span className="font-bold">30+ Years </span>
                             of experience in the Secondary Steel Industry with
                             maintaining a very good reputation in the market and
                             being well known for the Erection & Commissioning
