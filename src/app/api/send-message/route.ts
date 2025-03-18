@@ -32,7 +32,7 @@ export async function POST(req: Request) {
         // Create email content
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: "jayeshmateanil2014@gmail.com", // Replace with your recipient email
+            to: "forzohr@gmail.com", // Replace with your recipient email
             subject: `New Contact Form Submission from ${name}`,
             html: `
                 <h2>New Contact Form Submission</h2>

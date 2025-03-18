@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import { HyperText } from "./magicui/hyper-text";
 
 const HeroSection = () => {
     return (
@@ -29,8 +30,13 @@ const HeroSection = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <div className="inline-block bg-red-600 text-white px-4 py-1 text-2xl font-medium mb-6">
-                            INDUSTRIAL EXCELLENCE SINCE 1998
+                        <div className="inline-block bg-red-600 text-white px-4 text-2xl font-medium mb-6">
+                            <HyperText
+                                animateOnHover={false}
+                                className="text-xl"
+                            >
+                                INDUSTRIAL EXCELLENCE SINCE 1998
+                            </HyperText>
                         </div>
                     </motion.div>
 

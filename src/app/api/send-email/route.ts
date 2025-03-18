@@ -32,7 +32,7 @@ export async function POST(request: Request) {
         // Email to admin with PDF attachment
         const adminMailOptions = {
             from: `Forzo Team <${process.env.EMAIL_FROM}>`,
-            to: "jayeshmateanil2014@gmail.com",
+            to: "forzohr@gmail.com",
             subject: `📑 New Job Application Received`,
             html: `
                 <h2>📑 New Job Application Received</h2>
