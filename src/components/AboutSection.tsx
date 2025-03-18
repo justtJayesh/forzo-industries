@@ -32,14 +32,9 @@ const AboutSection = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
-                className="container mx-auto px-4"
+                className="container mx-auto px-4 mb-16"
             >
-                {/* <motion.h2
-                    variants={itemVariants}
-                    className="text-4xl font-bold text-center mb-12"
-                >
-                    About Forzo Industrial Solutions
-                </motion.h2> */}
+                
 
                 <motion.div
                     variants={itemVariants}
@@ -122,10 +117,10 @@ const AboutSection = () => {
                         */}
                         <motion.div
                             variants={itemVariants}
-                            className="max-w-72 hover:shadow-lg cursor-pointer transition-all duration-300 rounded-xl"
+                            className="max-w-96 hover:shadow-lg cursor-pointer transition-all duration-300 rounded-xl"
                         >
                             <Card className="h-full space-y-5">
-                                <div className="relative w-full h-36 flex justify-center items-center rounded-t-lg overflow-hidden">
+                                <div className="relative w-full h-44 flex justify-center items-center rounded-t-lg overflow-hidden">
                                     <Image
                                         src="/mission.jpg"
                                         alt="mission Image"
@@ -140,7 +135,7 @@ const AboutSection = () => {
                                     </p>
                                 </div>
                                 <CardContent>
-                                    <CardDescription>
+                                    <CardDescription className="text-md">
                                         To be the PREFERRED partner for the
                                         Manpower Solutions. Lorem ipsum dolor
                                         sit amet consectetur adipisicing elit.
@@ -164,10 +159,10 @@ const AboutSection = () => {
                         */}
                         <motion.div
                             variants={itemVariants}
-                            className="max-w-72 hover:shadow-lg cursor-pointer transition-all duration-300 rounded-xl"
+                            className="max-w-96 hover:shadow-lg cursor-pointer transition-all duration-300 rounded-xl"
                         >
                             <Card className="h-full space-y-5">
-                                <div className="relative w-full h-36 flex justify-center items-center rounded-t-lg overflow-hidden">
+                                <div className="relative w-full h-44 flex justify-center items-center rounded-t-lg overflow-hidden">
                                     <Image
                                         priority={false}
                                         src={"/vision.jpg"}
@@ -184,7 +179,7 @@ const AboutSection = () => {
                                     </p>
                                 </div>
                                 <CardContent>
-                                    <CardDescription>
+                                    <CardDescription className="text-md">
                                         To deliver quality & value through
                                         maintaining a quality management system
                                         that provides our clients with quality
@@ -201,7 +196,7 @@ const AboutSection = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
-                className="container mx-auto mt-20"
+                className="container mx-auto"
             >
                 <Link href="/about">
                     <div className="flex items-center justify-center gap-2 text-red-600 font-medium duration-300 cursor-pointer px-4 group">
