@@ -2,7 +2,14 @@
 
 import type React from "react";
 
-import { Building, Phone, Mail, MapPin, ArrowRight } from "lucide-react";
+import {
+    Building,
+    Phone,
+    Mail,
+    MapPin,
+    ArrowRight,
+    Loader2,
+} from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
@@ -14,7 +21,7 @@ export default function ContactPage() {
         phone: "",
         message: "",
     });
-    // const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,7 +32,7 @@ export default function ContactPage() {
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        // setIsSubmitting(true);
+        setIsSubmitting(true);
 
         const formDataToSend = new FormData();
         formDataToSend.append("name", formData.name);
@@ -43,9 +50,7 @@ export default function ContactPage() {
                 throw new Error("Failed to send message");
             }
 
-            // Show success message
             toast.success("Message sent successfully!");
-            // Reset form
             setFormData({
                 name: "",
                 email: "",
@@ -53,9 +58,11 @@ export default function ContactPage() {
                 message: "",
             });
         } catch (error) {
-            console.log(error)
+            console.log(error);
             toast.error("Failed to send message. Please try again.");
-        } 
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
     return (
@@ -286,10 +293,20 @@ export default function ContactPage() {
 
                                     <button
                                         type="submit"
-                                        className="bg-red-600 py-4 px-8 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2 font-medium"
+                                        disabled={isSubmitting}
+                                        className="bg-red-600 py-4 px-8 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2 font-medium disabled:opacity-70"
                                     >
-                                        Send Message
-                                        <ArrowRight className="h-5 w-5" />
+                                        {isSubmitting ? (
+                                            <>
+                                                <Loader2 className="h-5 w-5 animate-spin" />
+                                                Sending...
+                                            </>
+                                        ) : (
+                                            <>
+                                                Send Message
+                                                <ArrowRight className="h-5 w-5" />
+                                            </>
+                                        )}
                                     </button>
                                 </form>
                             </div>

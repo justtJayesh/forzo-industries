@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import BackToTop from "@/components/BackToTop";
@@ -36,6 +37,7 @@ export default function RootLayout({
             >
                 <Navbar />
                 {children}
+                <Analytics />
                 <Footer />
                 <BackToTop />
             </body>
