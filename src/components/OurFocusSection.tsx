@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion } from "motion/react";
 import {
     Dialog,
     DialogContent,
@@ -156,6 +157,24 @@ const services = [
     },
 ];
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+        },
+    },
+};
+
+const itemVariants = {
+    hidden: { y: 10, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+    },
+};
+
 const OurFocusSection = () => {
     const [selectedService, setSelectedService] =
         React.useState<Service | null>(null);
@@ -167,9 +186,18 @@ const OurFocusSection = () => {
     };
 
     return (
-        <section className="py-12 bg-gray-50">
-            <div className="container mx-auto px-6">
-                <div className="text-center max-w-3xl mx-auto mb-16">
+        <section className="py-12">
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                className="container mx-auto px-6"
+            >
+                <motion.div
+                    variants={itemVariants}
+                    className="text-center max-w-3xl mx-auto mb-16"
+                >
                     <div className="inline-block bg-red-600 text-white px-4 py-1 text-sm font-medium mb-6">
                         OUR EXPERTISE
                     </div>
@@ -180,7 +208,7 @@ const OurFocusSection = () => {
                         We specialize in providing targeted solutions that drive
                         innovation and growth for our clients.
                     </p>
-                </div>
+                </motion.div>
 
                 <Carousel
                     opts={{
@@ -416,7 +444,7 @@ const OurFocusSection = () => {
                         )}
                     </DialogContent>
                 </Dialog>
-            </div>
+            </motion.div>
         </section>
     );
 };

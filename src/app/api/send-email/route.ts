@@ -1,11 +1,18 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+type AcceptedMimeTypes =
+    | "application/pdf"
+    | "application/msword"
+    | "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    | "application/vnd.oasis.opendocument.text"
+    | "text/plain"
+    | "application/rtf";
+
 export async function POST(request: Request) {
     try {
         const formData = await request.formData();
 
-        // Get form fields
         const fullName = formData.get("fullName") as string;
         const email = formData.get("email") as string;
         const phone = formData.get("phone") as string;
@@ -13,7 +20,8 @@ export async function POST(request: Request) {
         const desiredPosition = formData.get("desiredPosition") as string;
         const yearsOfExperience = formData.get("yearsOfExperience") as string;
         const coverLetter = formData.get("coverLetter") as string;
-        const pdfFile = formData.get("pdf") as File;
+        // const pdfFile = formData.get("pdf") as File;
+        const resumeFile = formData.get("resume") as File;
 
         // Setup transporter for SMTP
         const transporter = nodemailer.createTransport({
@@ -24,15 +32,33 @@ export async function POST(request: Request) {
             },
         });
 
-        // Convert PDF file to buffer for attachment
-        const pdfBuffer = pdfFile
-            ? Buffer.from(await pdfFile.arrayBuffer())
+        // Convert resume file to buffer for attachment
+        const resumeBuffer = resumeFile
+            ? Buffer.from(await resumeFile.arrayBuffer())
             : null;
 
-        // Email to admin with PDF attachment
+        // Get file format for better email communication
+        const getFileFormat = (file: File): string => {
+            const fileTypeMap: Record<AcceptedMimeTypes, string> = {
+                "application/pdf": "PDF",
+                "application/msword": "DOC",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+                    "DOCX",
+                "application/vnd.oasis.opendocument.text": "ODT",
+                "text/plain": "TXT",
+                "application/rtf": "RTF",
+            };
+
+            // Check if the type is one of our accepted types
+            return Object.keys(fileTypeMap).includes(file.type)
+                ? fileTypeMap[file.type as AcceptedMimeTypes]
+                : "Unknown";
+        };
+
+        // Email to admin with resume attachment
         const adminMailOptions = {
             from: `Forzo Team <${process.env.EMAIL_FROM}>`,
-            to: "forzohr@gmail.com",
+            to: "Jayeshmateanil2014@gmail.com",
             subject: `📑 New Job Application Received`,
             html: `
                 <h2>📑 New Job Application Received</h2>
@@ -45,12 +71,19 @@ export async function POST(request: Request) {
                 <p><strong>Years of Experience:</strong> ${yearsOfExperience}</p>
                 <h3>Cover Letter:</h3>
                 <p>${coverLetter || "No cover letter provided"}</p>
+                ${
+                    resumeFile
+                        ? `<p><strong>Resume Format:</strong> ${getFileFormat(
+                              resumeFile
+                          )}</p>`
+                        : "<p><strong>Resume:</strong> Not provided</p>"
+                }
             `,
-            attachments: pdfBuffer
+            attachments: resumeBuffer
                 ? [
                       {
-                          filename: pdfFile.name,
-                          content: pdfBuffer,
+                          filename: resumeFile.name,
+                          content: resumeBuffer,
                       },
                   ]
                 : [],
@@ -62,22 +95,12 @@ export async function POST(request: Request) {
             to: email,
             subject: "Thank You for Your Application - Forzo",
             html: `
-                <h2>Thank You for Your Application!</h2>
+                <h3>Application Received - Thank you!</h3>
                 <p>Dear ${fullName},</p>
                 <p>We have received your application for the position of <strong>${desiredPosition}</strong> at Forzo. 
                 Thank you for your interest in joining our team!</p>
-                
-                <h3>Application Details:</h3>
-                <ul>
-                    <li>Position: ${desiredPosition}</li>
-                    <li>Phone: ${phone}</li>
-                    <li>Address: ${address}</li>
-                </ul>
-                
                 <p>Our hiring team will review your application and get back to you if your qualifications match our requirements.</p>
-                
-                <p>Please note that due to the high volume of applications, it may take some time to process all submissions.</p>
-                
+                <br/>
                 <p>Best Regards,<br>
                 The Forzo Recruitment Team</p>
             `,
@@ -93,7 +116,6 @@ export async function POST(request: Request) {
                 "Application received and confirmation emails sent successfully!",
         });
     } catch (error) {
-        console.error("Email Error:", error);
         return NextResponse.json({
             success: false,
             message: "Failed to process application",

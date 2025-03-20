@@ -109,8 +109,9 @@ export default function ContactPage() {
                                                 Head Office
                                             </h3>
                                             <p className="text-gray-600">
-                                                Office No. 706 & 707, 7th Floor
-                                                Park Plaza Business Center,
+                                                Office No. 705, 706 & 707, 7th
+                                                Floor Park Plaza Business
+                                                Center,
                                                 <br />
                                                 Porwal Road, Pune, Maharashtra -
                                                 411047
@@ -127,10 +128,10 @@ export default function ContactPage() {
                                                 Phone
                                             </h3>
                                             <p className="text-gray-600">
-                                                +91-84217 71025
+                                                +91-9689110131
                                             </p>
                                             <p className="text-gray-600">
-                                                +91-91454 00247
+                                                +91-9145400247
                                             </p>
                                         </div>
                                     </div>
@@ -185,17 +186,19 @@ export default function ContactPage() {
                                             <div className="w-3 h-3 rounded-full bg-red-600"></div>
                                             <p className="text-gray-600">
                                                 <span className="font-medium text-gray-900">
-                                                    CIN
+                                                    CIN:
                                                 </span>{" "}
                                             </p>
+                                            <p>U74999PN2022PTC207711</p>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <div className="w-3 h-3 rounded-full bg-red-600"></div>
                                             <p className="text-gray-600">
                                                 <span className="font-medium text-gray-900">
-                                                    GSTIN
+                                                    GSTIN:
                                                 </span>{" "}
                                             </p>
+                                            <p>27AAECF8877D1ZA</p>
                                         </div>
                                     </div>
                                 </div>

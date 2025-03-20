@@ -80,7 +80,16 @@ export default function Footer() {
                         <ul className="space-y-4">
                             <li>
                                 <Link
-                                    href="/services"
+                                    href="/services?id=1"
+                                    className="text-gray-400 hover:text-white hover:translate-x-1 transition-all flex items-center gap-2 group"
+                                >
+                                    <ArrowRight className="h-4 w-0 group-hover:w-4 overflow-hidden transition-all duration-300" />
+                                    <span>Turnkey Project</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/services?id=2"
                                     className="text-gray-400 hover:text-white hover:translate-x-1 transition-all flex items-center gap-2 group"
                                 >
                                     <ArrowRight className="h-4 w-0 group-hover:w-4 overflow-hidden transition-all duration-300" />
@@ -89,22 +98,14 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    href="/services"
+                                    href="/services?id=3"
                                     className="text-gray-400 hover:text-white hover:translate-x-1 transition-all flex items-center gap-2 group"
                                 >
                                     <ArrowRight className="h-4 w-0 group-hover:w-4 overflow-hidden transition-all duration-300" />
                                     <span>Layout, Design & Engineering</span>
                                 </Link>
                             </li>
-                            <li>
-                                <Link
-                                    href="/services"
-                                    className="text-gray-400 hover:text-white hover:translate-x-1 transition-all flex items-center gap-2 group"
-                                >
-                                    <ArrowRight className="h-4 w-0 group-hover:w-4 overflow-hidden transition-all duration-300" />
-                                    <span>Supply & Installation</span>
-                                </Link>
-                            </li>
+
                             <li>
                                 <Link
                                     href="/services"
@@ -125,8 +126,8 @@ export default function Footer() {
                             <div className="flex gap-3">
                                 <MapPin className="h-5 w-5 text-red-500 flex-shrink-0 mt-1" />
                                 <address className="not-italic text-gray-400">
-                                    Office No. 705, 706 & 707, 7th Floor Park Plaza
-                                    Business Center, Porwal Road, Pune,
+                                    Office No. 705, 706 & 707, 7th Floor Park
+                                    Plaza Business Center, Porwal Road, Pune,
                                     Maharashtra - 411047
                                 </address>
                             </div>
@@ -152,6 +153,9 @@ export default function Footer() {
                             <div className="flex gap-3">
                                 <Phone className="h-5 w-5 text-red-500 flex-shrink-0 mt-1" />
                                 <div>
+                                    <p className="text-gray-400">
+                                        +91-9689110131
+                                    </p>
                                     <p className="text-gray-400">
                                         +91-91454 00247
                                     </p>

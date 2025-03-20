@@ -117,7 +117,8 @@ export default function Navbar() {
 
                     {/* Services dropdown */}
                     <div className="relative group">
-                        <button
+                        <Link
+                            href="/services"
                             className={`flex items-center gap-1 font-medium transition-colors ${
                                 isActive("/services")
                                     ? "text-red-600"
@@ -126,7 +127,7 @@ export default function Navbar() {
                         >
                             Services{" "}
                             <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
-                        </button>
+                        </Link>
                         <div className="absolute left-0 top-full z-50 hidden group-hover:block w-[320px] bg-white border border-gray-200 rounded-md shadow-xl p-4">
                             <div className="grid gap-1">
                                 {services.map((service) => (

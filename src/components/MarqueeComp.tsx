@@ -30,6 +30,46 @@ const reviews = [
         name: "Radha Smelters Pvt. Ltd",
         img: "/partner-company-logos/radha-logo.jpg",
     },
+    {
+        name: "Bhagyalaxmi Rolling Mill Pvt. Ltd",
+        img: "/partner-company-logos/blrm.jpeg",
+    },
+    {
+        name: "Aman Rolling Mills Pvt. Ltd",
+        img: "/partner-company-logos/aman-mil.png",
+    },
+    {
+        name: "Fortune Metaliks Pvt. Ltd",
+        img: "/partner-company-logos/fortune-group.webp",
+    },
+    {
+        name: "Madhav KRG Group",
+        img: "/partner-company-logos/madhavkgrgroup.webp",
+    },
+    {
+        name: "Metarolls Ispat Pvt Ltd",
+        img: "/partner-company-logos/metaroll.png",
+    },
+    {
+        name: "Sunflag Iron & Steel Co. Ltd",
+        img: "/partner-company-logos/sunflag.png",
+    },
+    {
+        name: "Suryadev Alloys & Power Plant Pvt. Ltd",
+        img: "/partner-company-logos/suryadev.jpeg",
+    },
+    {
+        name: "Vardhman Special Steel Ltd",
+        img: "/partner-company-logos/vardhmansteels_logo.jpeg",
+    },
+    {
+        name: "Vivan Steel Pvt. Ltd.",
+        img: "/partner-company-logos/vivan-right-steel.png",
+    },
+    {
+        name: "Viraj Profiles Ltd. ",
+        img: "/partner-company-logos/vpl.png",
+    },
 ];
 
 const firstRow = reviews.slice(0, reviews.length / 2);

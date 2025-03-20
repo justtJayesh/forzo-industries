@@ -24,7 +24,7 @@ const Career = () => {
     };
 
     return (
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-gray-50">
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
@@ -48,7 +48,9 @@ const Career = () => {
                         </p>
                         <div className="w-fit">
                             <Link href="/career">
-                                <Button variant="destructive">Join Us</Button>
+                                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">
+                                    Join Us
+                                </Button>
                             </Link>
                         </div>
                     </motion.div>

@@ -75,8 +75,40 @@ const formSchema = z.object({
     coverLetter: z.string().optional(),
 });
 
+// Define the allowed MIME types with a type for better TypeScript support
+type AcceptedMimeTypes =
+    | "application/pdf"
+    | "application/msword"
+    | "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    | "application/vnd.oasis.opendocument.text"
+    | "text/plain"
+    | "application/rtf"
+    | "image/jpeg"
+    | "image/png"
+    | "image/gif"
+    | "image/webp"
+    | "image/svg+xml"
+    | "image/tiff";
+
+// Accepted resume file types and their MIME types
+const ACCEPTED_FILE_TYPES: Record<AcceptedMimeTypes, string> = {
+    // Document formats
+    "application/pdf": "PDF",
+    "application/msword": "DOC",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+        "DOCX",
+    "application/vnd.oasis.opendocument.text": "ODT",
+    "text/plain": "TXT",
+    "application/rtf": "RTF",
+    "image/jpeg": "JPG/JPEG",
+    "image/png": "PNG",
+    "image/gif": "GIF",
+    "image/webp": "WEBP",
+    "image/svg+xml": "SVG",
+    "image/tiff": "TIFF",
+};
+
 export default function ApplicationForm() {
-    // Initialize form
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -90,8 +122,10 @@ export default function ApplicationForm() {
         },
     });
 
-    // Add this line to track the PDF file
-    const [pdfFile, setPdfFile] = useState<File | null>(null);
+    // Change from pdfFile to resumeFile to be more generic
+    const [resumeFile, setResumeFile] = useState<File | null>(null);
+    // Track the file format for display
+    const [fileFormat, setFileFormat] = useState<string>("");
 
     // Add these state variables at the top of your component
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -99,6 +133,12 @@ export default function ApplicationForm() {
 
     // Handle form submission
     async function onSubmit(values: z.infer<typeof formSchema>) {
+        // Check if resume file is uploaded
+        if (!resumeFile) {
+            toast.error("Please upload your resume before submitting");
+            return;
+        }
+
         setIsSubmitting(true);
         const formData = new FormData();
 
@@ -107,10 +147,7 @@ export default function ApplicationForm() {
             formData.append(key, value.toString());
         });
 
-        // Add PDF file if it exists
-        if (pdfFile) {
-            formData.append("pdf", pdfFile);
-        }
+        formData.append("resume", resumeFile);
 
         try {
             const response = await fetch("/api/send-email", {
@@ -125,33 +162,40 @@ export default function ApplicationForm() {
             setShowSuccessDialog(true);
             // Reset form and file
             form.reset();
-            setPdfFile(null);
+            setResumeFile(null);
+            setFileFormat("");
         } catch (error) {
-            console.log(error)
+            console.log(error);
             toast.error("Something went wrong. Please try again.");
         } finally {
             setIsSubmitting(false);
         }
     }
 
-    // Add a function to handle PDF file changes
-    function handlePdfChange(e: React.ChangeEvent<HTMLInputElement>) {
+    // Add a function to handle resume file changes
+    function handleResumeChange(e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.files && e.target.files.length > 0) {
             const file = e.target.files[0];
+            const fileType = file.type as AcceptedMimeTypes;
 
             // Validate file type
-            if (file.type !== "application/pdf") {
-                alert("Please upload a PDF file");
+            if (!Object.keys(ACCEPTED_FILE_TYPES).includes(fileType)) {
+                toast.error(
+                    `Please upload a supported file format (${Object.values(
+                        ACCEPTED_FILE_TYPES
+                    ).join(", ")})`
+                );
                 return;
             }
 
             // Validate file size (max 5MB)
             if (file.size > 5 * 1024 * 1024) {
-                alert("File size should be less than 5MB");
+                toast.error("File size should be less than 5MB");
                 return;
             }
 
-            setPdfFile(file);
+            setResumeFile(file);
+            setFileFormat(ACCEPTED_FILE_TYPES[fileType] || "Unknown format");
         }
     }
 
@@ -334,19 +378,35 @@ export default function ApplicationForm() {
                             />
 
                             <div className="mb-6 space-y-2">
-                                <FormLabel htmlFor="pdf">Upload PDF</FormLabel>
+                                <FormLabel htmlFor="resume">
+                                    Upload Resume{" "}
+                                    <span className="text-red-600">*</span>
+                                </FormLabel>
                                 <Input
-                                    id="pdf"
+                                    id="resume"
                                     type="file"
-                                    accept=".pdf"
-                                    onChange={handlePdfChange}
+                                    accept=".pdf,.doc,.docx,.odt,.txt,.rtf,.jpg,.jpeg,.png,.gif,.webp,.svg,.tiff"
+                                    onChange={handleResumeChange}
                                     className="cursor-pointer"
+                                    required
                                 />
-                                {pdfFile && (
+                                {resumeFile && (
                                     <p className="text-sm text-green-600 mt-1">
-                                        Selected: {pdfFile.name}
+                                        Selected: {resumeFile.name} (
+                                        {fileFormat})
                                     </p>
                                 )}
+                                {!resumeFile && (
+                                    <p className="text-sm text-amber-600 mt-1">
+                                        Please upload your resume before
+                                        submitting
+                                    </p>
+                                )}
+                                <p className="text-xs text-gray-500 mt-1">
+                                    Supported formats: PDF, DOC, DOCX, ODT, TXT,
+                                    RTF, JPG, JPEG, PNG, GIF, WEBP, SVG, TIFF
+                                    (Max 5MB)
+                                </p>
                             </div>
                             <div className="text-sm text-gray-500 mb-4">
                                 <p>

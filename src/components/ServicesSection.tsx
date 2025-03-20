@@ -13,6 +13,16 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+        },
+    },
+};
+
 const itemVariants = {
     hidden: { y: 10, opacity: 0 },
     visible: {
@@ -21,6 +31,7 @@ const itemVariants = {
     },
 };
 
+
 const ServicesSection = () => {
     const [activeService, setActiveService] = useState(1);
     const services = getAllServices();
@@ -28,8 +39,14 @@ const ServicesSection = () => {
     // console.log("specific Data: ", activeServiceData?.serviceProvider);
 
     return (
-        <section className="py-20 bg-white">
-            <div className="container mx-auto px-6">
+        <section className="py-20 bg-gray-50">
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                className="container mx-auto px-6"
+            >
                 <motion.div
                     variants={itemVariants}
                     className="text-center max-w-3xl mx-auto mb-16"
@@ -167,6 +184,19 @@ const ServicesSection = () => {
                                         <h3 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900">
                                             {
                                                 activeServiceData
+                                                    .serviceContract?.title
+                                            }
+                                        </h3>
+                                        <p className="text-sm sm:text-base text-gray-700 mb-6 leading-relaxed">
+                                            {
+                                                activeServiceData
+                                                    .serviceContract
+                                                    ?.description
+                                            }
+                                        </p>
+                                        <h3 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900">
+                                            {
+                                                activeServiceData
                                                     .serviceProvider?.title
                                             }
                                         </h3>
@@ -222,7 +252,7 @@ const ServicesSection = () => {
                         )}
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 };

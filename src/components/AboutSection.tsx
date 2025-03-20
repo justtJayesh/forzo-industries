@@ -26,7 +26,7 @@ const AboutSection = () => {
     };
 
     return (
-        <section className="container mx-auto py-20">
+        <section className="mx-auto py-20 bg-gray-50">
             <motion.div
                 variants={containerVariants}
                 initial="hidden"

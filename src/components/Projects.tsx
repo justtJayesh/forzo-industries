@@ -51,7 +51,7 @@ const Projects = () => {
     };
 
     return (
-        <section className="py-20 bg-gray-50">
+        <section className="py-20">
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
@@ -59,12 +59,23 @@ const Projects = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 className="container mx-auto px-4"
             >
-                <motion.h2
+                <motion.div
                     variants={itemVariants}
-                    className="text-4xl font-bold text-center mb-12"
+                    className="text-center max-w-3xl mx-auto mb-16"
                 >
-                    Major Projects
-                </motion.h2>
+                    <div className="inline-block bg-red-600 text-white px-4 py-1 text-sm font-medium mb-6">
+                        NOTABLE ACHIEVEMENTS
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                        Major Projects
+                    </h2>
+                    <p className="text-base md:text-lg text-gray-600">
+                        Explore our showcase of successful projects that
+                        demonstrate our expertise, innovation, and commitment to
+                        excellence across various industries and technical
+                        challenges.
+                    </p>
+                </motion.div>
                 <div>
                     <MarqueeComp />
                 </div>
