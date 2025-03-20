@@ -58,7 +58,7 @@ export async function POST(request: Request) {
         // Email to admin with resume attachment
         const adminMailOptions = {
             from: `Forzo Team <${process.env.EMAIL_FROM}>`,
-            to: "Jayeshmateanil2014@gmail.com",
+            to: "forzohr@gmail.com",
             subject: `📑 New Job Application Received`,
             html: `
                 <h2>📑 New Job Application Received</h2>
