@@ -112,6 +112,11 @@ export default function CareersPage() {
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </Button>
                         </Link>
+                        <Link href="#">
+                            <p className="max-w-fit text-lg text-gray-200 mt-8 mx-auto hover:underline">
+                                Build your resume here
+                            </p>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -297,6 +302,11 @@ export default function CareersPage() {
                             Submit Your Resume
                             <ArrowRight className="ml-2 h-5 w-5" />
                         </Button>
+                    </Link>
+                    <Link href="#">
+                        <p className="max-w-fit text-lg text-gray-200 mt-8 mx-auto hover:underline">
+                            Build your resume here
+                        </p>
                     </Link>
                 </div>
             </div>

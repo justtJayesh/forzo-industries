@@ -1,5 +1,7 @@
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 import { AiOutlineFacebook, AiOutlineLinkedin } from "react-icons/ai";
+import { BiLogoPlayStore } from "react-icons/bi";
+import { FaAppStoreIos } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -171,6 +173,18 @@ export default function Footer() {
                                 </Link>
                                 <Link href="#">
                                     <AiOutlineFacebook
+                                        size={28}
+                                        className="text-red-500 flex-shrink-0 mt-3"
+                                    />
+                                </Link>
+                                <Link href="#">
+                                    <FaAppStoreIos
+                                        size={28}
+                                        className="text-red-500 flex-shrink-0 mt-3"
+                                    />
+                                </Link>
+                                <Link href="#">
+                                    <BiLogoPlayStore
                                         size={28}
                                         className="text-red-500 flex-shrink-0 mt-3"
                                     />
