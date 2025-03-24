@@ -9,6 +9,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
+import { ChevronRight } from "lucide-react";
 
 // Values data
 const values = [
@@ -112,10 +113,28 @@ export default function CareersPage() {
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </Button>
                         </Link>
-                        <Link href="#">
-                            <p className="max-w-fit text-lg text-gray-200 mt-8 mx-auto hover:underline">
-                                Build your resume here
+                        {/* <Link href="#">
+                            <p className="max-w-fit text-lg text-gray-200 mt-8 mx-auto underline hover:text-[#2563eb]">
+                                Build your CV here for free
                             </p>
+                        </Link> */}
+                        <Link href="#">
+                            <div className="mt-8 mx-auto w-fit">
+                                <div className="group flex items-center gap-3 rounded-full bg-white/90 px-5 py-2 text-gray-900 shadow-md transition-all duration-300 hover:bg-white">
+                                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-red-600">
+                                        <FileText className="h-3.5 w-3.5 text-white" />
+                                    </div>
+                                    <span className="font-medium">
+                                        Click here to create and share your CV
+                                        to anyone at{" "}
+                                        <span className="text-red-600">
+                                            FREE
+                                        </span>{" "}
+                                        of cost
+                                    </span>
+                                    <ChevronRight className="h-4 w-4 text-red-600 transition-transform duration-300 group-hover:translate-x-1" />
+                                </div>
+                            </div>
                         </Link>
                     </div>
                 </div>
@@ -304,9 +323,20 @@ export default function CareersPage() {
                         </Button>
                     </Link>
                     <Link href="#">
-                        <p className="max-w-fit text-lg text-gray-200 mt-8 mx-auto hover:underline">
-                            Build your resume here
-                        </p>
+                        <div className="mt-8 mx-auto w-fit">
+                            <div className="group flex items-center gap-3 rounded-full bg-white/90 px-5 py-2 text-gray-900 shadow-md transition-all duration-300 hover:bg-white">
+                                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-red-600">
+                                    <FileText className="h-3.5 w-3.5 text-white" />
+                                </div>
+                                <span className="font-medium">
+                                    Click here to create and share your CV to
+                                    anyone at{" "}
+                                    <span className="text-red-600">FREE</span>{" "}
+                                    of cost
+                                </span>
+                                <ChevronRight className="h-4 w-4 text-red-600 transition-transform duration-300 group-hover:translate-x-1" />
+                            </div>
+                        </div>
                     </Link>
                 </div>
             </div>
